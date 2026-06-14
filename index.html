@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seu Signo - Astrologia, Mapa Astral e Universo Jovem</title>
+
+    <!-- SEO Básico -->
+    <meta name="description"
+        content="Explore a Matrix do Zodíaco. Descubra seu signo, mapa astral, compatibilidades e horóscopo com a visão mais moderna e estética da astrologia.">
+    <meta name="keywords"
+        content="signos, astrologia, mapa astral, ascendente, horóscopo, tarot, compatibilidade amorosa, zodíaco, geração z">
+    <meta name="author" content="SeuSigno">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://seusigno.com.br/">
+
+    <!-- Open Graph (Facebook/WhatsApp/LinkedIn) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://seusigno.com.br/">
+    <meta property="og:title" content="Seu Signo - Identidade Cósmica">
+    <meta property="og:description"
+        content="Decodifique sua identidade cósmica com nossa abordagem moderna de astrologia, signos e sinastria.">
+    <meta property="og:image" content="https://seusigno.com.br/og-home.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/jpeg">
+
+    <!-- Twitter Cards -->
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:site_name" content="Seu Signo">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://seusigno.com.br/">
+    <meta name="twitter:title" content="Seu Signo - Identidade Cósmica">
+    <meta name="twitter:description"
+        content="Decodifique sua identidade cósmica com nossa abordagem moderna de astrologia.">
+    <meta name="twitter:image" content="https://seusigno.com.br/og-home.jpg">
+
+    <!-- Schema.org (Google Rich Snippets) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Seu Signo",
+      "url": "https://seusigno.com.br/",
+      "description": "Portal moderno de astrologia, horóscopo, mapa astral e compatibilidade amorosa para a nova geração.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://seusigno.com.br/buscar?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Seu Signo",
+      "url": "https://seusigno.com.br/",
+      "logo": "https://seusigno.com.br/og-home.jpg",
+      "sameAs": []
+    }
+    </script>
+
+        <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Fontes Modernas -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap"
+        rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Outfit"', 'sans-serif'],
+                        display: ['"Space Grotesk"', 'sans-serif']
+                    },
+                    colors: {
+                        aura: {
+                            purple: "#a855f7",
+                            pink: "#ec4899",
+                            cyan: "#06b6d4",
+                            dark: "#030305"
+                        },
+                        // Cores oficiais dos Elementos Astrológicos
+                        element: {
+                            fire: "#f97316",  // Laranja (Fogo)
+                            earth: "#10b981", // Verde (Terra)
+                            air: "#0ea5e9",   // Azul Claro (Ar)
+                            water: "#6366f1",  // Indigo/Roxo (Água)
+                            all: "#facc15"
+                        }
+                    },
+                    animation: {
+                        'marquee-left': 'marqueeLeft 40s linear infinite',
+                        'marquee-right': 'marqueeRight 45s linear infinite',
+                    },
+                    keyframes: {
+                        marqueeLeft: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-50%)' }, // Move 50% for seamless loop if content is duplicated inside
+                        },
+                        marqueeRight: {
+                            '0%': { transform: 'translateX(-50%)' },
+                            '100%': { transform: 'translateX(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #030305;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Fundo Levemente Estrelado */
+        .stars-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            background-image:
+                radial-gradient(circle at center, rgba(255, 255, 255, 0.15) 1px, transparent 1px),
+                radial-gradient(circle at center, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 120px 120px, 200px 200px;
+            background-position: 0 0, 50px 50px;
+            opacity: 0.5;
+        }
+
+        /* Auras de Fundo */
+        .aura-glow-1 {
+            position: fixed;
+            top: -10%;
+            left: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+        }
+
+        .aura-glow-2 {
+            position: fixed;
+            bottom: -10%;
+            right: -10%;
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(100px);
+            z-index: -1;
+        }
+
+        /* Glassmorphism Cards */
+        .bento-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 24px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .bento-card:hover {
+            border-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Gradiente para Textos */
+        .text-gradient {
+            background: linear-gradient(135deg, #a855f7, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Letreiro Setup */
+        .marquee-container {
+            display: flex;
+            overflow: hidden;
+            white-space: nowrap;
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        }
+
+        .marquee-content {
+            display: flex;
+            flex-shrink: 0;
+            min-width: max-content;
+        }
+
+        /* Scrollbar customizada */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #030305;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+
+<body class="antialiased flex flex-col min-h-screen relative">
+
+    <!-- Elementos de Fundo -->
+    <div class="stars-bg"></div>
+    <div class="aura-glow-1"></div>
+    <div class="aura-glow-2"></div>
+
+    <!-- HEADER -->
+    <header
+        class="fixed top-0 left-0 right-0 z-50 bg-[#030305]/70 backdrop-blur-xl border-b border-white/5 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+
+            <!-- Logo Adaptável -->
+            <a href="/" class="font-display font-bold text-2xl tracking-tighter flex items-center gap-3 z-50">
+                <!-- <img src="./logo.png" alt="Logotipo Seu Signo" class="h-8 md:h-10 w-auto object-contain"> -->
+                <!-- O texto abaixo fica oculto no celular (sm) para economizar espaço e visível no computador -->
+                <span class="text-element-all">✦</span>
+                <span class="hidden sm:block">SeuSigno</span>
+            </a>
+
+            <!-- Navegação Desktop -->
+            <nav class="hidden md:flex gap-8 text-sm font-medium text-gray-400" aria-label="Navegação Principal">
+                <a href="#matrix" class="hover:text-white transition-colors">Signos</a>
+                <a href="#horoscopo" class="hover:text-white transition-colors">Horóscopo</a>
+                <a href="#tools" class="hover:text-white transition-colors">Ferramentas</a>
+            </nav>
+
+            <!-- Botão Menu Mobile -->
+            <button class="md:hidden text-2xl text-white z-50 focus:outline-none" id="menu-btn" aria-label="Abrir Menu">
+                <svg id="menu-icon-open" class="w-6 h-6 transition-opacity" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                </svg>
+                <svg id="menu-icon-close" class="w-6 h-6 hidden transition-opacity" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+        </div>
+
+
+    </header>
+
+    <!-- Overlay Menu Mobile -->
+    <div id="mobile-menu"
+        class="fixed inset-0 pt-32 pb-10 overflow-y-auto bg-[#030305]/95 backdrop-blur-3xl flex flex-col items-center gap-10 text-2xl font-display opacity-0 pointer-events-none transition-all duration-300 z-40 md:hidden">
+        <a href="#matrix" class="mobile-link text-gray-300 hover:text-white hover:scale-110 transition-all">Signos</a>
+        <a href="#horoscopo"
+            class="mobile-link text-gray-300 hover:text-white hover:scale-110 transition-all">Horóscopo</a>
+        <a href="#tools"
+            class="mobile-link text-gray-300 hover:text-white hover:scale-110 transition-all">Ferramentas</a>
+        <!-- <a href="#sobre"
+            class="mobile-link text-gray-300 hover:text-white hover:scale-110 transition-all mt-6 border-t border-white/10 w-[60%] text-center pt-8 text-xl">Sobre
+            Nós</a> -->
+    </div>
+
+    <main class="flex-grow">
+        <!-- HERO SECTION -->
+        <section class="pt-[65px] relative">
+            <!-- Letreiro Topo (Rolando para a ESQUERDA) Colado no Header -->
+            <div class="py-4 border-b border-white/5 bg-white/[0.01] mb-16 md:mb-24">
+                <div class="marquee-container group">
+                    <!-- Div 1 (Conteúdo Original) -->
+                    <div class="marquee-content animate-marquee-left gap-8 px-4 items-center text-xl md:text-3xl font-display font-bold uppercase tracking-widest text-transparent opacity-80 group-hover:[animation-play-state:paused]"
+                        style="-webkit-text-stroke: 1px rgba(255,255,255,0.4);">
+                        <a href="https://seusigno.com.br/aries"
+                            class="hover:text-element-fire transition-colors cursor-pointer">ÁRIES</a><span
+                            class="text-element-fire">✦</span>
+                        <a href="https://seusigno.com.br/touro"
+                            class="hover:text-element-earth transition-colors cursor-pointer">TOURO</a><span
+                            class="text-element-earth">✦</span>
+                        <a href="https://seusigno.com.br/gemeos"
+                            class="hover:text-element-air transition-colors cursor-pointer">GÊMEOS</a><span
+                            class="text-element-air">✦</span>
+                        <a href="https://seusigno.com.br/cancer"
+                            class="hover:text-element-water transition-colors cursor-pointer">CÂNCER</a><span
+                            class="text-element-water">✦</span>
+                        <a href="https://seusigno.com.br/leao"
+                            class="hover:text-element-fire transition-colors cursor-pointer">LEÃO</a><span
+                            class="text-element-fire">✦</span>
+                        <a href="https://seusigno.com.br/virgem"
+                            class="hover:text-element-earth transition-colors cursor-pointer">VIRGEM</a><span
+                            class="text-element-earth">✦</span>
+                        <a href="https://seusigno.com.br/libra"
+                            class="hover:text-element-air transition-colors cursor-pointer">LIBRA</a><span
+                            class="text-element-air">✦</span>
+                        <a href="https://seusigno.com.br/escorpiao"
+                            class="hover:text-element-water transition-colors cursor-pointer">ESCORPIÃO</a><span
+                            class="text-element-water">✦</span>
+                        <a href="https://seusigno.com.br/sagitario"
+                            class="hover:text-element-fire transition-colors cursor-pointer">SAGITÁRIO</a><span
+                            class="text-element-fire">✦</span>
+                        <a href="https://seusigno.com.br/capricornio"
+                            class="hover:text-element-earth transition-colors cursor-pointer">CAPRICÓRNIO</a><span
+                            class="text-element-earth">✦</span>
+                        <a href="https://seusigno.com.br/aquario"
+                            class="hover:text-element-air transition-colors cursor-pointer">AQUÁRIO</a><span
+                            class="text-element-air">✦</span>
+                        <a href="https://seusigno.com.br/peixes"
+                            class="hover:text-element-water transition-colors cursor-pointer">PEIXES</a><span
+                            class="text-element-water">✦</span>
+                        <!-- Cópia exata interna para o loop seamless via translateX(-50%) -->
+                        <a href="https://seusigno.com.br/aries"
+                            class="hover:text-element-fire transition-colors cursor-pointer ml-8">ÁRIES</a><span
+                            class="text-element-fire">✦</span>
+                        <a href="https://seusigno.com.br/touro"
+                            class="hover:text-element-earth transition-colors cursor-pointer">TOURO</a><span
+                            class="text-element-earth">✦</span>
+                        <a href="https://seusigno.com.br/gemeos"
+                            class="hover:text-element-air transition-colors cursor-pointer">GÊMEOS</a><span
+                            class="text-element-air">✦</span>
+                        <a href="https://seusigno.com.br/cancer"
+                            class="hover:text-element-water transition-colors cursor-pointer">CÂNCER</a><span
+                            class="text-element-water">✦</span>
+                        <a href="https://seusigno.com.br/leao"
+                            class="hover:text-element-fire transition-colors cursor-pointer">LEÃO</a><span
+                            class="text-element-fire">✦</span>
+                        <a href="https://seusigno.com.br/virgem"
+                            class="hover:text-element-earth transition-colors cursor-pointer">VIRGEM</a><span
+                            class="text-element-earth">✦</span>
+                        <a href="https://seusigno.com.br/libra"
+                            class="hover:text-element-air transition-colors cursor-pointer">LIBRA</a><span
+                            class="text-element-air">✦</span>
+                        <a href="https://seusigno.com.br/escorpiao"
+                            class="hover:text-element-water transition-colors cursor-pointer">ESCORPIÃO</a><span
+                            class="text-element-water">✦</span>
+                        <a href="https://seusigno.com.br/sagitario"
+                            class="hover:text-element-fire transition-colors cursor-pointer">SAGITÁRIO</a><span
+                            class="text-element-fire">✦</span>
+                        <a href="https://seusigno.com.br/capricornio"
+                            class="hover:text-element-earth transition-colors cursor-pointer">CAPRICÓRNIO</a><span
+                            class="text-element-earth">✦</span>
+                        <a href="https://seusigno.com.br/aquario"
+                            class="hover:text-element-air transition-colors cursor-pointer">AQUÁRIO</a><span
+                            class="text-element-air">✦</span>
+                        <a href="https://seusigno.com.br/peixes"
+                            class="hover:text-element-water transition-colors cursor-pointer">PEIXES</a><span
+                            class="text-element-water">✦</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="max-w-4xl mx-auto px-6 text-center pb-16">
+                <span
+                    class="inline-block py-1 px-3 rounded-full bg-white/5 border border-white/10 text-xs font-medium tracking-wide text-aura-purple mb-6">
+                    Descubra sua energia
+                </span>
+                <h1 class="font-display text-5xl md:text-7xl font-bold tracking-tight mb-6 leading-tight">
+                    Decodifique sua <br>
+                    <span class="text-gradient">Identidade Cósmica</span>
+                </h1>
+                <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-10 font-light">
+                    Uma abordagem moderna da astrologia. Entenda suas red flags, compatibilidades amorosas e o
+                    verdadeiro significado do seu mapa astral.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <a href="#matrix"
+                        class="bg-white text-black hover:bg-gray-200 transition-colors rounded-full px-8 py-4 font-bold text-sm w-full sm:w-auto text-center">
+                        Ver meu Signo
+                    </a>
+                    <a href="#tools"
+                        class="bg-white/5 hover:bg-white/10 border border-white/10 transition-colors rounded-full px-8 py-4 font-bold text-sm w-full sm:w-auto text-center">
+                        Gerar Mapa Astral
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ZODIAC MATRIX (CARDS ROLANDO PARA A DIREITA) -->
+        <section id="matrix" class="py-24 relative overflow-hidden">
+            <div class="text-center mb-16 relative z-10 px-6">
+                <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">A <span class="text-gradient">Matrix</span>
+                    do Zodíaco</h2>
+                <p class="text-gray-400 font-light max-w-xl mx-auto">Escolha seu signo solar para acessar seus traços de
+                    personalidade, red flags e compatibilidades.</p>
+            </div>
+
+            <!-- Container da Esteira -->
+            <div class="relative w-full z-10 flex group">
+                <!-- Sombras laterais -->
+                <div
+                    class="absolute inset-y-0 left-0 w-12 md:w-32 bg-gradient-to-r from-[#030305] to-transparent z-20 pointer-events-none">
+                </div>
+                <div
+                    class="absolute inset-y-0 right-0 w-12 md:w-32 bg-gradient-to-l from-[#030305] to-transparent z-20 pointer-events-none">
+                </div>
+
+                <!-- Pista Animada (Rolando para a DIREITA com pausa no hover) -->
+                <div
+                    class="flex w-max animate-marquee-right group-hover:[animation-play-state:paused] hover:cursor-grab active:cursor-grabbing">
+
+                    <!-- GRUPO COMPLETO (Itens Originais + Cópia para Loop Perfeito) -->
+                    <!-- Áries (Fogo) -->
+                    <a href="https://seusigno.com.br/aries"
+                        class="bento-card w-40 md:w-48 shrink-0 p-6 flex flex-col items-center justify-center text-center group aspect-square hover:bg-white/5 mx-2">
+                        <div
+                            class="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-all duration-300 group-hover:bg-element-fire/20 group-hover:shadow-[0_0_15px_rgba(249,115,22,0.5)]">
+                            ♈</div>
+                        <h3 class="font-display font-bold text-lg group-hover:text-element-fire transition-colors">Áries
+                        </h3>
+                        <p class="text-gray-500 text-xs mt-1">Fogo • Ação</p>
+                    </a>
+                    <!-- Touro (Terra) -->
+                    <a href="https://seusigno.com.br/touro"
+                        class="bento-card w-40 md:w-48 shrink-0 p-6 flex flex-col items-center justify-center text-center group aspect-square hover:bg-white/5 mx-2">
+                        <div
+                            class="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-all duration-300 group-hover:bg-element-earth/20 group-hover:shadow-[0_0_15px_rgba(16,185,129,0.5)]">
+                            ♉</div>
+                        <h3 class="font-display font-bold text-lg group-hover:text-element-earth transition-colors">
+                            Touro</h3>
+                        <p class="text-gray-500 text-xs mt-1">Terra • Conforto</p>
+                    </a>
+                    <!-- Gêmeos (Ar) -->
+                    <a href="https://seusigno.com.br/gemeos"
+                        class="bento-card w-40 md:w-48 shrink-0 p-6 flex flex-col items-center justify-center text-center group aspect-square hover:bg-white/5 mx-2">
+                        <div
+                            class="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-all duration-300 group-hover:bg-element-air/20 group-hover:shadow-[0_0_15px_rgba(14,165,233,0.5)]">
+                            ♊</div>
+                        <h3 class="font-display font-bold text-lg group-hover:text-element-air transition-colors">Gêmeos
+                        </h3>
+                        <p class="text-gray-500 text-xs mt-1">Ar • Ideias</p>
+                    </a>
+                    <!-- Câncer (Água) -->
+                    <a href="https://seusigno.com.br/cancer"
+                        class="bento-card w-40 md:w-48 shrink-0 p-6 flex flex-col items-center justify-center text-center group aspect-square hover:bg-white/5 mx-2">
+                        <div
+                            class="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-all duration-300 group-hover:bg-element-water/20 group-hover:shadow-[0_0_15px_rgba(99,102,241,0.5)]">
+                            ♋</div>
+                        <h3 class="font-display font-bold text-lg group-hover:text-element-water transition-colors">
+                            Câncer</h3>
+                        <p class="text-gray-500 text-xs mt-1">Água • Emoção</p>
+                    </a>
+                    <!-- Leão (Fogo) -->
+                    <a href="https://seusigno.com.br/leao"
+                        class="bento-card w-40 md:w-48 shrink-0 p-6 flex flex-col items-center justify-center text-center group aspect-square hover:bg-white/5 mx-2">
+                        <div
+                            class="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-all duration-300 group-hover:bg-element-fire/20 group-hover:shadow-[0_0_15px_rgba(249,115,22,0.5)]">
+                            ♌</div>
+                        <h3 class="font-display font-bold text-lg group-hover:text-element-fire transition-colors">Leão
+                        </h3>
+                        <p class="text-gray-500 text-xs mt-1">Fogo • Brilho</p>
+                    </a>
+                    <!-- Virgem (Terra) -->
+                    <a href="https://seusigno.com.br/virgem"
+                        class="bento-card w-40 md:w-48 shrink-0 p-6 flex flex-col items-center justify-center text-center group aspect-square hover:bg-white/5 mx-2">
+                        <div
+                            class="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-all duration-300 group-hover:bg-element-earth/20 group-hover:shadow-[0_0_15px_rgba(16,185,129,0.5)]">
+                            ♍</div>
+                        <h3 class="font-display font-bold text-lg group-hover:text-element-earth transition-colors">
+                            Virgem</h3>
+                        <p class="text-gray-500 text-xs mt-1">Terra • Ordem</p>
+                    </a>
+                    <!-- Libra (Ar) -->
+                    <a href="https://seusigno.com.br/libra"
+                        class="bento-card w-40 md:w-48 shrink-0 p-6 flex flex-col items-center justify-center text-center group aspect-square hover:bg-white/5 mx-2">
+                        <div
+                            class="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-all duration-300 group-hover:bg-element-air/20 group-hover:shadow-[0_0_15px_rgba(14,165,233,0.5)]">
+                            ♎</div>
+                        <h3 class="font-display font-bold text-lg group-hover:text-element-air transition-colors">Libra
+                        </h3>
+                        <p class="text-gray-500 text-xs mt-1">Ar • Harmonia</p>
+                    </a>
+                    <!-- Escorpião (Água) -->
+                    <a href="https://seusigno.com.br/escorpiao"
+                        class="bento-card w-40 md:w-48 shrink-0 p-6 flex flex-col items-center justify-center text-center group aspect-square hover:bg-white/5 mx-2">
+                        <div
+                            class="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-all duration-300 group-hover:bg-element-water/20 group-hover:shadow-[0_0_15px_rgba(99,102,241,0.5)]">
+                            ♏</div>
+                        <h3 class="font-display font-bold text-lg group-hover:text-element-water transition-colors">
+                            Escorpião</h3>
+                        <p class="text-gray-500 text-xs mt-1">Água • Intensidade</p>
+                    </a>
+                    <!-- Sagitário (Fogo) -->
+                    <a href="https://seusigno.com.br/sagitario"
+                        class="bento-card w-40 md:w-48 shrink-0 p-6 flex flex-col items-center justify-center text-center group aspect-square hover:bg-white/5 mx-2">
+                        <div
+                            class="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-all duration-300 group-hover:bg-element-fire/20 group-hover:shadow-[0_0_15px_rgba(249,115,22,0.5)]">
+                            ♐</div>
+                        <h3 class="font-display font-bold text-lg group-hover:text-element-fire transition-colors">
+                            Sagitário</h3>
+                        <p class="text-gray-500 text-xs mt-1">Fogo • Liberdade</p>
+                    </a>
+                    <!-- Capricórnio (Terra) -->
+                    <a href="https://seusigno.com.br/capricornio"
+                        class="bento-card w-40 md:w-48 shrink-0 p-6 flex flex-col items-center justify-center text-center group aspect-square hover:bg-white/5 mx-2">
+                        <div
+                            class="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-all duration-300 group-hover:bg-element-earth/20 group-hover:shadow-[0_0_15px_rgba(16,185,129,0.5)]">
+                            ♑</div>
+                        <h3 class="font-display font-bold text-lg group-hover:text-element-earth transition-colors">
+                            Capricórnio</h3>
+                        <p class="text-gray-500 text-xs mt-1">Terra • Foco</p>
+                    </a>
+                    <!-- Aquário (Ar) -->
+                    <a href="https://seusigno.com.br/aquario"
+                        class="bento-card w-40 md:w-48 shrink-0 p-6 flex flex-col items-center justify-center text-center group aspect-square hover:bg-white/5 mx-2">
+                        <div
+                            class="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-all duration-300 group-hover:bg-element-air/20 group-hover:shadow-[0_0_15px_rgba(14,165,233,0.5)]">
+                            ♒</div>
+                        <h3 class="font-display font-bold text-lg group-hover:text-element-air transition-colors">
+                            Aquário</h3>
+                        <p class="text-gray-500 text-xs mt-1">Ar • Inovação</p>
+                    </a>
+                    <!-- Peixes (Água) -->
+                    <a href="https://seusigno.com.br/peixes"
+                        class="bento-card w-40 md:w-48 shrink-0 p-6 flex flex-col items-center justify-center text-center group aspect-square hover:bg-white/5 mx-2">
+                        <div
+                            class="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-all duration-300 group-hover:bg-element-water/20 group-hover:shadow-[0_0_15px_rgba(99,102,241,0.5)]">
+                            ♓</div>
+                        <h3 class="font-display font-bold text-lg group-hover:text-element-water transition-colors">
+                            Peixes</h3>
+                        <p class="text-gray-500 text-xs mt-1">Água • Empatia</p>
+                    </a>
+
+                    <!-- REPETIÇÃO EXATA PARA O LOOP CONTÍNUO (-50% translateX) -->
+                    <!-- Áries (Fogo) -->
+                    <a href="https://seusigno.com.br/aries"
+                        class="bento-card w-40 md:w-48 shrink-0 p-6 flex flex-col items-center justify-center text-center group aspect-square hover:bg-white/5 mx-2">
+                        <div
+                            class="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-all duration-300 group-hover:bg-element-fire/20 group-hover:shadow-[0_0_15px_rgba(249,115,22,0.5)]">
+                            ♈</div>
+                        <h3 class="font-display font-bold text-lg group-hover:text-element-fire transition-colors">Áries
+                        </h3>
+                        <p class="text-gray-500 text-xs mt-1">Fogo • Ação</p>
+                    </a>
+                    <!-- Touro (Terra) -->
+                    <a href="https://seusigno.com.br/touro"
+                        class="bento-card w-40 md:w-48 shrink-0 p-6 flex flex-col items-center justify-center text-center group aspect-square hover:bg-white/5 mx-2">
+                        <div
+                            class="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-all duration-300 group-hover:bg-element-earth/20 group-hover:shadow-[0_0_15px_rgba(16,185,129,0.5)]">
+                            ♉</div>
+                        <h3 class="font-display font-bold text-lg group-hover:text-element-earth transition-colors">
+                            Touro</h3>
+                        <p class="text-gray-500 text-xs mt-1">Terra • Conforto</p>
+                    </a>
+                    <!-- Gêmeos (Ar) -->
+                    <a href="https://seusigno.com.br/gemeos"
+                        class="bento-card w-40 md:w-48 shrink-0 p-6 flex flex-col items-center justify-center text-center group aspect-square hover:bg-white/5 mx-2">
+                        <div
+                            class="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-all duration-300 group-hover:bg-element-air/20 group-hover:shadow-[0_0_15px_rgba(14,165,233,0.5)]">
+                            ♊</div>
+                        <h3 class="font-display font-bold text-lg group-hover:text-element-air transition-colors">Gêmeos
+                        </h3>
+                        <p class="text-gray-500 text-xs mt-1">Ar • Ideias</p>
+                    </a>
+                    <!-- Câncer (Água) -->
+                    <a href="https://seusigno.com.br/cancer"
+                        class="bento-card w-40 md:w-48 shrink-0 p-6 flex flex-col items-center justify-center text-center group aspect-square hover:bg-white/5 mx-2">
+                        <div
+                            class="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-all duration-300 group-hover:bg-element-water/20 group-hover:shadow-[0_0_15px_rgba(99,102,241,0.5)]">
+                            ♋</div>
+                        <h3 class="font-display font-bold text-lg group-hover:text-element-water transition-colors">
+                            Câncer</h3>
+                        <p class="text-gray-500 text-xs mt-1">Água • Emoção</p>
+                    </a>
+                    <!-- Leão (Fogo) -->
+                    <a href="https://seusigno.com.br/leao"
+                        class="bento-card w-40 md:w-48 shrink-0 p-6 flex flex-col items-center justify-center text-center group aspect-square hover:bg-white/5 mx-2">
+                        <div
+                            class="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-all duration-300 group-hover:bg-element-fire/20 group-hover:shadow-[0_0_15px_rgba(249,115,22,0.5)]">
+                            ♌</div>
+                        <h3 class="font-display font-bold text-lg group-hover:text-element-fire transition-colors">Leão
+                        </h3>
+                        <p class="text-gray-500 text-xs mt-1">Fogo • Brilho</p>
+                    </a>
+                    <!-- Virgem (Terra) -->
+                    <a href="https://seusigno.com.br/virgem"
+                        class="bento-card w-40 md:w-48 shrink-0 p-6 flex flex-col items-center justify-center text-center group aspect-square hover:bg-white/5 mx-2">
+                        <div
+                            class="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-all duration-300 group-hover:bg-element-earth/20 group-hover:shadow-[0_0_15px_rgba(16,185,129,0.5)]">
+                            ♍</div>
+                        <h3 class="font-display font-bold text-lg group-hover:text-element-earth transition-colors">
+                            Virgem</h3>
+                        <p class="text-gray-500 text-xs mt-1">Terra • Ordem</p>
+                    </a>
+                    <!-- Libra (Ar) -->
+                    <a href="https://seusigno.com.br/libra"
+                        class="bento-card w-40 md:w-48 shrink-0 p-6 flex flex-col items-center justify-center text-center group aspect-square hover:bg-white/5 mx-2">
+                        <div
+                            class="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-all duration-300 group-hover:bg-element-air/20 group-hover:shadow-[0_0_15px_rgba(14,165,233,0.5)]">
+                            ♎</div>
+                        <h3 class="font-display font-bold text-lg group-hover:text-element-air transition-colors">Libra
+                        </h3>
+                        <p class="text-gray-500 text-xs mt-1">Ar • Harmonia</p>
+                    </a>
+                    <!-- Escorpião (Água) -->
+                    <a href="https://seusigno.com.br/escorpiao"
+                        class="bento-card w-40 md:w-48 shrink-0 p-6 flex flex-col items-center justify-center text-center group aspect-square hover:bg-white/5 mx-2">
+                        <div
+                            class="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-all duration-300 group-hover:bg-element-water/20 group-hover:shadow-[0_0_15px_rgba(99,102,241,0.5)]">
+                            ♏</div>
+                        <h3 class="font-display font-bold text-lg group-hover:text-element-water transition-colors">
+                            Escorpião</h3>
+                        <p class="text-gray-500 text-xs mt-1">Água • Intensidade</p>
+                    </a>
+                    <!-- Sagitário (Fogo) -->
+                    <a href="https://seusigno.com.br/sagitario"
+                        class="bento-card w-40 md:w-48 shrink-0 p-6 flex flex-col items-center justify-center text-center group aspect-square hover:bg-white/5 mx-2">
+                        <div
+                            class="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-all duration-300 group-hover:bg-element-fire/20 group-hover:shadow-[0_0_15px_rgba(249,115,22,0.5)]">
+                            ♐</div>
+                        <h3 class="font-display font-bold text-lg group-hover:text-element-fire transition-colors">
+                            Sagitário</h3>
+                        <p class="text-gray-500 text-xs mt-1">Fogo • Liberdade</p>
+                    </a>
+                    <!-- Capricórnio (Terra) -->
+                    <a href="https://seusigno.com.br/capricornio"
+                        class="bento-card w-40 md:w-48 shrink-0 p-6 flex flex-col items-center justify-center text-center group aspect-square hover:bg-white/5 mx-2">
+                        <div
+                            class="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-all duration-300 group-hover:bg-element-earth/20 group-hover:shadow-[0_0_15px_rgba(16,185,129,0.5)]">
+                            ♑</div>
+                        <h3 class="font-display font-bold text-lg group-hover:text-element-earth transition-colors">
+                            Capricórnio</h3>
+                        <p class="text-gray-500 text-xs mt-1">Terra • Foco</p>
+                    </a>
+                    <!-- Aquário (Ar) -->
+                    <a href="https://seusigno.com.br/aquario"
+                        class="bento-card w-40 md:w-48 shrink-0 p-6 flex flex-col items-center justify-center text-center group aspect-square hover:bg-white/5 mx-2">
+                        <div
+                            class="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-all duration-300 group-hover:bg-element-air/20 group-hover:shadow-[0_0_15px_rgba(14,165,233,0.5)]">
+                            ♒</div>
+                        <h3 class="font-display font-bold text-lg group-hover:text-element-air transition-colors">
+                            Aquário</h3>
+                        <p class="text-gray-500 text-xs mt-1">Ar • Inovação</p>
+                    </a>
+                    <!-- Peixes (Água) -->
+                    <a href="https://seusigno.com.br/peixes"
+                        class="bento-card w-40 md:w-48 shrink-0 p-6 flex flex-col items-center justify-center text-center group aspect-square hover:bg-white/5 mx-2">
+                        <div
+                            class="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-all duration-300 group-hover:bg-element-water/20 group-hover:shadow-[0_0_15px_rgba(99,102,241,0.5)]">
+                            ♓</div>
+                        <h3 class="font-display font-bold text-lg group-hover:text-element-water transition-colors">
+                            Peixes</h3>
+                        <p class="text-gray-500 text-xs mt-1">Água • Empatia</p>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- TOOLS / BENTO GRID -->
+        <section id="tools" class="py-24 max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Destaque Mapa Astral -->
+                <a href="#mapa" class="bento-card md:col-span-2 p-8 md:p-12 relative overflow-hidden group">
+                    <div
+                        class="absolute right-0 top-0 w-64 h-64 bg-aura-purple/10 blur-[60px] rounded-full group-hover:bg-aura-purple/20 transition-colors">
+                    </div>
+                    <div class="relative z-10">
+                        <span
+                            class="text-aura-purple text-sm font-bold tracking-wider uppercase mb-2 block">Premium</span>
+                        <h3 class="font-display text-3xl md:text-4xl font-bold mb-4">Mapa Astral Completo</h3>
+                        <p class="text-gray-400 max-w-md mb-8">Descubra onde estavam os planetas no exato momento do seu
+                            nascimento. Sol, Lua, Ascendente e Casas Astrológicas explicados de forma simples.</p>
+                        <span
+                            class="inline-flex items-center justify-center bg-white text-black px-6 py-2.5 rounded-full text-sm font-bold transition-transform group-hover:scale-105">
+                            Ler meu Mapa →
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Compatibilidade -->
+                <a href="https://seusigno.com.br/match-cosmico"
+                    class="bento-card p-8 flex flex-col justify-between group relative overflow-hidden">
+                    <div
+                        class="absolute bottom-0 right-0 w-32 h-32 bg-aura-pink/10 blur-[40px] rounded-full group-hover:bg-aura-pink/20 transition-colors">
+                    </div>
+                    <div class="relative z-10">
+                        <div class="text-4xl mb-4 transition-transform group-hover:scale-110 origin-left">💞</div>
+                        <h3 class="font-display text-2xl font-bold mb-2">Match Cósmico</h3>
+                        <p class="text-gray-400 text-sm">A química de vocês está escrita nas estrelas? Faça o teste de
+                            compatibilidade.</p>
+                    </div>
+                    <span
+                        class="text-aura-pink mt-6 text-sm font-bold flex items-center relative z-10 group-hover:translate-x-2 transition-transform">
+                        Testar Crush →
+                    </span>
+                </a>
+
+                <!-- Tarot -->
+                <a href="#tarot" class="bento-card p-8 flex flex-col justify-between group relative overflow-hidden">
+                    <div
+                        class="absolute top-0 left-0 w-32 h-32 bg-aura-cyan/10 blur-[40px] rounded-full group-hover:bg-aura-cyan/20 transition-colors">
+                    </div>
+                    <div class="relative z-10">
+                        <div class="text-4xl mb-4 transition-transform group-hover:scale-110 origin-left">🃏</div>
+                        <h3 class="font-display text-2xl font-bold mb-2">Tarot do Dia</h3>
+                        <p class="text-gray-400 text-sm">Puxe 3 cartas e receba um conselho direto para o seu momento
+                            atual.</p>
+                    </div>
+                    <span
+                        class="text-aura-cyan mt-6 text-sm font-bold flex items-center relative z-10 group-hover:translate-x-2 transition-transform">
+                        Tirar Cartas →
+                    </span>
+                </a>
+
+                <!-- Ascendente -->
+                <a href="#ascendente"
+                    class="bento-card md:col-span-2 p-8 flex flex-col md:flex-row items-center gap-8 justify-between group">
+                    <div>
+                        <h3 class="font-display text-2xl font-bold mb-2">Qual meu Ascendente?</h3>
+                        <p class="text-gray-400 text-sm max-w-md">O ascendente dita como o mundo te vê e a sua primeira
+                            impressão. Descubra agora usando apenas seu horário de nascimento.</p>
+                    </div>
+                    <span
+                        class="bg-white/10 hover:bg-white/20 transition-colors px-6 py-3 rounded-full text-sm font-bold whitespace-nowrap text-center">
+                        Calcular Ascendente
+                    </span>
+                </a>
+            </div>
+        </section>
+
+        <!-- HOROSCOPE MODULE -->
+        <section id="horoscopo" class="py-16 max-w-3xl mx-auto px-6 mb-10">
+            <div class="bento-card p-8 md:p-12 text-center relative overflow-hidden border-aura-purple/20">
+                <div
+                    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] bg-gradient-to-tr from-aura-purple/5 to-aura-pink/5 z-0 blur-[50px]">
+                </div>
+
+                <div class="relative z-10">
+                    <span
+                        class="bg-white/10 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-4 inline-block">Daily
+                        Drop</span>
+                    <h2 class="font-display text-3xl md:text-4xl font-bold mb-4">A vibe de hoje</h2>
+
+                    <div class="bg-black/40 border border-white/5 rounded-2xl p-6 mt-6 text-left">
+                        <p class="text-gray-300 leading-relaxed font-light text-lg italic">
+                            "A energia lunar favorece a comunicação clara. Evite guardar sentimentos para si mesmo(a).
+                            Se algo está te incomodando, este é o momento de falar, mas com responsabilidade emocional."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="mt-auto border-t border-white/5 pt-16 pb-8 text-center bg-[#030305] relative z-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="font-display font-bold text-2xl mb-8 flex items-center justify-center gap-2">
+                <span class="text-aura-purple">✧</span> SeuSigno
+            </h2>
+            <nav aria-label="Navegação do Rodapé"
+                class="flex flex-wrap justify-center gap-6 text-sm text-gray-500 mb-12">
+                <a href="#about" class="hover:text-white transition-colors">Sobre Nós</a>
+                <a href="#privacy" class="hover:text-white transition-colors">Privacidade</a>
+                <a href="#terms" class="hover:text-white transition-colors">Termos</a>
+                <a href="#instagram" class="hover:text-aura-pink transition-colors">Instagram</a>
+                <a href="#tiktok" class="hover:text-aura-cyan transition-colors">TikTok</a>
+            </nav>
+            <p class="text-xs text-gray-600 font-light">© 2026 SeuSigno. Todos os direitos reservados. Não jogue a culpa
+                das suas escolhas em Mercúrio Retrógrado.</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPT MENU MOBILE (Corrigido e simplificado) -->
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const iconOpen = document.getElementById('menu-icon-open');
+        const iconClose = document.getElementById('menu-icon-close');
+        const body = document.body;
+
+        let menuOpen = false;
+
+        function toggleMenu() {
+            menuOpen = !menuOpen;
+
+            if (menuOpen) {
+                // Abrir (Altera opacidade e ativa cliques)
+                mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
+                mobileMenu.classList.add('opacity-100', 'pointer-events-auto');
+
+                iconOpen.classList.add('hidden');
+                iconClose.classList.remove('hidden');
+                body.style.overflow = 'hidden'; // Impede o scroll atrás
+            } else {
+                // Fechar (Remove opacidade e desativa cliques)
+                mobileMenu.classList.remove('opacity-100', 'pointer-events-auto');
+                mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+
+                iconClose.classList.add('hidden');
+                iconOpen.classList.remove('hidden');
+                body.style.overflow = ''; // Restaura o scroll
+            }
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
+
+        // Fecha o menu ao clicar em qualquer link
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                if (menuOpen) toggleMenu();
+            });
+        });
+    </script>
+</body>
+
+</html>
