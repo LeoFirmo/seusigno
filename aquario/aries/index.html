@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Áries - Personalidade, Amor e Mapa Astral | Seu Signo</title>
+
+    <!-- SEO Básico -->
+    <meta name="description"
+        content="Descubra tudo sobre o signo de Áries. A energia do fogo, traços de personalidade, red flags, compatibilidade no amor e como lidar com esse pioneiro do zodíaco.">
+    <meta name="keywords"
+        content="signo de áries, áries, horóscopo áries, perfil áries, fogo, marte, mapa astral áries, compatibilidade áries">
+    <meta name="author" content="SeuSigno">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://seusigno.com.br/aries/">
+
+    <!-- Open Graph (Facebook/WhatsApp/LinkedIn) -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://seusigno.com.br/aries/">
+    <meta property="og:title" content="Áries - A Força Pioneira do Zodíaco">
+    <meta property="og:description"
+        content="Coragem, impulsividade e zero paciência para enrolação. Decodifique a mente e o coração de Áries.">
+    <meta property="og:image" content="https://seusigno.com.br/aries/og-aries.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/jpeg">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://seusigno.com.br/aries/">
+    <meta name="twitter:title" content="Áries - A Força Pioneira do Zodíaco">
+    <meta name="twitter:description" content="Coragem, impulsividade e zero paciência para enrolação.">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:site_name" content="Seu Signo">
+
+    <meta name="twitter:image" content="https://seusigno.com.br/aries/og-aries.jpg">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Fontes Modernas -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap"
+        rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Outfit"', 'sans-serif'],
+                        display: ['"Space Grotesk"', 'sans-serif']
+                    },
+                    colors: {
+                        aura: {
+                            purple: "#a855f7",
+                            pink: "#ec4899",
+                            cyan: "#06b6d4",
+                            dark: "#030305"
+                        },
+                        element: {
+                            fire: "#f97316",  // Laranja (Fogo)
+                            earth: "#10b981", // Verde (Terra)
+                            air: "#0ea5e9",   // Azul Claro (Ar)
+                            water: "#6366f1",  // Indigo/Roxo (Água)
+                            all: "#facc15"
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #030305;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Fundo Levemente Estrelado */
+        .stars-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            background-image:
+                radial-gradient(circle at center, rgba(255, 255, 255, 0.15) 1px, transparent 1px),
+                radial-gradient(circle at center, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 120px 120px, 200px 200px;
+            background-position: 0 0, 50px 50px;
+            opacity: 0.5;
+        }
+
+        /* Auras de Fundo específicas para Áries (Tons de Fogo) */
+        .aura-glow-fire-1 {
+            position: fixed;
+            top: -10%;
+            left: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, rgba(249, 115, 22, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+        }
+
+        .aura-glow-fire-2 {
+            position: fixed;
+            bottom: -10%;
+            right: -10%;
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(100px);
+            z-index: -1;
+        }
+
+        /* Glassmorphism Cards */
+        .bento-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 24px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .bento-card:hover {
+            border-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Gradiente para Áries */
+        .text-gradient-fire {
+            background: linear-gradient(135deg, #f97316, #ef4444);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Scrollbar customizada */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #030305;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Áries - Personalidade, Amor e Mapa Astral",
+      "description": "Descubra tudo sobre o signo de Áries: personalidade, coragem, red flags e compatibilidade.",
+      "url": "https://seusigno.com.br/aries/",
+      "datePublished": "2026-01-01",
+      "dateModified": "2026-06-14",
+      "author": {
+        "@type": "Organization",
+        "name": "Seu Signo",
+        "url": "https://seusigno.com.br/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Seu Signo",
+        "url": "https://seusigno.com.br/"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://seusigno.com.br/aries/"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://seusigno.com.br/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Áries",
+          "item": "https://seusigno.com.br/aries/"
+        }
+      ]
+    }
+    </script>
+
+</head>
+
+<body class="antialiased flex flex-col min-h-screen relative">
+
+    <!-- Elementos de Fundo -->
+    <div class="stars-bg"></div>
+    <div class="aura-glow-fire-1"></div>
+    <div class="aura-glow-fire-2"></div>
+
+    <!-- HEADER -->
+    <header
+        class="fixed top-0 left-0 right-0 z-50 bg-[#030305]/70 backdrop-blur-xl border-b border-white/5 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+
+            <!-- Logo Adaptável -->
+            <a href="/" class="font-display font-bold text-2xl tracking-tighter flex items-center gap-3 z-50">
+                <span class="text-element-all">✦</span>
+                <span class="hidden sm:block">SeuSigno</span>
+            </a>
+
+            <!-- Navegação Desktop -->
+            <nav class="hidden md:flex gap-8 text-sm font-medium text-gray-400" aria-label="Navegação Principal">
+                <a href="/#matrix" class="hover:text-white transition-colors">Signos</a>
+                <a href="/#horoscopo" class="hover:text-white transition-colors">Horóscopo</a>
+                <a href="/#tools" class="hover:text-white transition-colors">Ferramentas</a>
+            </nav>
+
+            <!-- Botão Menu Mobile -->
+            <button class="md:hidden text-2xl text-white z-50 focus:outline-none" id="menu-btn" aria-label="Abrir Menu">
+                <svg id="menu-icon-open" class="w-6 h-6 transition-opacity" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                </svg>
+                <svg id="menu-icon-close" class="w-6 h-6 hidden transition-opacity" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Overlay Menu Mobile -->
+    <div id="mobile-menu"
+        class="fixed inset-0 pt-32 pb-10 overflow-y-auto bg-[#030305]/95 backdrop-blur-3xl flex flex-col items-center gap-10 text-2xl font-display opacity-0 pointer-events-none transition-all duration-300 z-40 md:hidden">
+        <a href="/#matrix" class="mobile-link text-gray-300 hover:text-white hover:scale-110 transition-all">Signos</a>
+        <a href="/#horoscopo"
+            class="mobile-link text-gray-300 hover:text-white hover:scale-110 transition-all">Horóscopo</a>
+        <a href="/#tools"
+            class="mobile-link text-gray-300 hover:text-white hover:scale-110 transition-all">Ferramentas</a>
+    </div>
+
+    <main class="flex-grow pt-[100px] md:pt-[140px]">
+        <!-- HERO SECTION ARIES -->
+        <section class="max-w-4xl mx-auto px-6 text-center pb-16 relative">
+            
+            <!-- Breadcrumbs -->
+            <div class="flex items-center justify-center gap-2 text-xs font-medium text-gray-500 mb-8">
+                <a href="/" class="hover:text-white transition-colors">Zodíaco</a>
+                <span>/</span>
+                <span class="text-element-fire">Áries</span>
+            </div>
+
+            <!-- Ícone Gigante -->
+            <div class="w-32 h-32 md:w-40 md:h-40 mx-auto rounded-full bg-white/5 border border-element-fire/20 flex items-center justify-center text-6xl md:text-7xl mb-8 shadow-[0_0_50px_rgba(249,115,22,0.15)]">
+                ♈
+            </div>
+
+            <!-- Títulos -->
+            <span class="inline-block py-1 px-4 rounded-full bg-element-fire/10 border border-element-fire/20 text-xs font-bold tracking-widest text-element-fire mb-4 uppercase">
+                21 Mar - 19 Abr
+            </span>
+            <h1 class="font-display text-5xl md:text-7xl font-bold tracking-tight mb-6">
+                <span class="text-gradient-fire">Áries</span>
+            </h1>
+            <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed mb-12">
+                A centelha inicial do universo. Coragem, impulsividade, pavio curto e uma energia inesgotável para iniciar coisas novas. Literalmente a vibe de <i>"main character"</i>.
+            </p>
+
+            <!-- Horóscopo do Dia (Largura Total na max-w-4xl) -->
+            <div class="bento-card p-8 md:p-10 w-full text-left relative overflow-hidden group border-element-fire/20">
+                <!-- Efeito de brilho no fundo -->
+                <div class="absolute -top-24 -right-24 w-64 h-64 bg-element-fire/10 blur-[60px] rounded-full group-hover:bg-element-fire/20 transition-colors duration-700"></div>
+                
+                <div class="relative z-10">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-4">
+                        <div class="flex items-center gap-3">
+                            <span class="bg-element-fire/20 text-element-fire px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase border border-element-fire/30">
+                                Horóscopo do Dia
+                            </span>
+                            <span class="text-gray-500 text-sm font-medium">Domingo, 14 de Junho de 2026</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="flex flex-col items-center md:items-end">
+                                <span class="text-xs text-gray-500 uppercase tracking-wider mb-1">Vibe</span>
+                                <span class="text-white text-sm font-bold flex items-center gap-1">Intensa <span class="text-element-fire">⚡</span></span>
+                            </div>
+                            <div class="h-8 w-px bg-white/10 hidden md:block"></div>
+                            <div class="flex flex-col items-center md:items-start">
+                                <span class="text-xs text-gray-500 uppercase tracking-wider mb-1">Cor</span>
+                                <span class="text-white text-sm font-bold flex items-center gap-1"><div class="w-3 h-3 rounded-full bg-red-600"></div> Vermelho Sangue</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="font-display text-2xl font-bold mb-4 text-white">Segura a emoção, carneirinho.</h3>
+                    
+                    <p class="text-gray-300 leading-relaxed font-light mb-6">
+                        A lua está fazendo uma quadratura tensa com Marte (seu regente), o que significa que hoje você acordou com a paciência no nível zero e a vontade de bater boca no nível cem. Respire fundo antes de mandar aquele áudio de 3 minutos destruindo os argumentos de alguém. Use essa energia acumulada para gastar no treino ou focar num projeto seu. No amor, cuidado com ceninhas de ciúme desnecessárias; a pessoa não tem bola de cristal para adivinhar o que te irritou.
+                    </p>
+
+                    <div class="flex items-center gap-4 bg-black/40 p-4 rounded-xl border border-white/5 inline-flex">
+                        <span class="text-xs text-gray-500 uppercase tracking-wider">Números da Sorte:</span>
+                        <span class="font-display font-bold text-lg text-element-fire tracking-widest">07 - 14 - 23 - 42</span>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- BENTO GRID - DETALHES DO SIGNO -->
+        <section class="max-w-7xl mx-auto px-6 pb-24">
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+
+                <!-- Stats Astrológicos (1 coluna) -->
+                <div class="bento-card p-6 flex flex-col justify-between col-span-1 lg:col-span-1 border-element-fire/10 hover:border-element-fire/30">
+                    <h3 class="font-display text-xl font-bold mb-6 text-white/80">Ficha Técnica</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between border-b border-white/5 pb-3">
+                            <span class="text-gray-500 text-sm">Elemento</span>
+                            <span class="font-bold text-element-fire flex items-center gap-2">Fogo <span class="text-lg">🔥</span></span>
+                        </div>
+                        <div class="flex items-center justify-between border-b border-white/5 pb-3">
+                            <span class="text-gray-500 text-sm">Planeta</span>
+                            <span class="font-bold text-red-500 flex items-center gap-2">Marte <span class="text-lg">🔴</span></span>
+                        </div>
+                        <div class="flex items-center justify-between border-b border-white/5 pb-3">
+                            <span class="text-gray-500 text-sm">Ritmo</span>
+                            <span class="font-bold text-white flex items-center gap-2">Cardeal <span class="text-lg">⚡</span></span>
+                        </div>
+                        <div class="flex items-center justify-between pt-1">
+                            <span class="text-gray-500 text-sm">Símbolo</span>
+                            <span class="font-bold text-white">O Carneiro</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Personalidade (2 colunas) -->
+                <div class="bento-card p-8 md:p-10 col-span-1 md:col-span-2 lg:col-span-2 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-element-fire/5 blur-[50px] rounded-full group-hover:bg-element-fire/10 transition-colors duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="text-3xl mb-4">✨</div>
+                        <h3 class="font-display text-2xl md:text-3xl font-bold mb-4">A Personalidade</h3>
+                        <p class="text-gray-300 leading-relaxed font-light mb-4">
+                            Sendo o primeiro signo do zodíaco, Áries gosta de ser o primeiro em tudo. Eles não conhecem a palavra "esperar" e têm zero paciência para enrolação. Se um ariano quer algo, ele simplesmente vai lá e faz, agindo muitas vezes antes de pensar.
+                        </p>
+                        <p class="text-gray-300 leading-relaxed font-light">
+                            São líderes natos, destemidos e altamente competitivos (até num jogo de Uno amigável). A honestidade deles é brutal — o famoso sincericídio —, mas nunca vem de um lugar ruim; eles apenas não têm filtros para a verdade.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Red Flags (1 coluna) -->
+                <div class="bento-card p-8 col-span-1 md:col-span-1 lg:col-span-1 border-red-500/10 hover:border-red-500/30">
+                    <div class="text-3xl mb-4">🚩</div>
+                    <h3 class="font-display text-xl font-bold mb-4">Red Flags</h3>
+                    <ul class="space-y-3 text-gray-400 font-light text-sm">
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-0.5">•</span>
+                            <span>Pavio extremamente curto. Estouram do nada (e esquecem 5 min depois).</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-0.5">•</span>
+                            <span>"A minha ideia é sempre a melhor".</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-0.5">•</span>
+                            <span>Desistem rápido se a coisa ficar monótona.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-0.5">•</span>
+                            <span>Odeiam ser contrariados ou receber ordens.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- No Amor (2 colunas) -->
+                <div class="bento-card p-8 md:p-10 col-span-1 md:col-span-2 relative overflow-hidden group">
+                    <div class="absolute bottom-0 right-0 w-40 h-40 bg-pink-500/10 blur-[40px] rounded-full group-hover:bg-pink-500/20 transition-colors"></div>
+                    <div class="relative z-10">
+                        <div class="text-3xl mb-4">💖</div>
+                        <h3 class="font-display text-2xl font-bold mb-4">Áries no Amor</h3>
+                        <p class="text-gray-300 leading-relaxed font-light mb-4">
+                            A emoção para um ariano está na caça. Eles amam o jogo da conquista e perdem o interesse se a pessoa for "fácil demais" ou não estimular a mente deles. Quando se apaixonam, vão direto ao ponto, sem joguinhos de desinteresse.
+                        </p>
+                        <p class="text-gray-300 leading-relaxed font-light">
+                            Exigem espaço, independência e, acima de tudo, um parceiro(a) que consiga acompanhar o ritmo frenético deles. Ciúmes? Sim, e muito, afinal, são competitivos até nas relações.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Match Cósmico (2 colunas) -->
+                <div class="bento-card p-8 md:p-10 col-span-1 md:col-span-1 lg:col-span-2">
+                    <div class="text-3xl mb-4">💞</div>
+                    <h3 class="font-display text-2xl font-bold mb-6">Match Cósmico</h3>
+                    
+                    <div class="space-y-5">
+                        <!-- Alta -->
+                        <div>
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="bg-green-500/20 text-green-400 text-xs font-bold px-2 py-1 rounded uppercase">Alta Compatibilidade</span>
+                            </div>
+                            <div class="flex gap-3 text-sm">
+                                <a href="/leao" class="text-white hover:text-element-fire transition-colors">Leão ♌</a>
+                                <span class="text-gray-600">•</span>
+                                <a href="/sagitario" class="text-white hover:text-element-fire transition-colors">Sagitário ♐</a>
+                                <span class="text-gray-600">•</span>
+                                <a href="/gemeos" class="text-white hover:text-element-air transition-colors">Gêmeos ♊</a>
+                            </div>
+                        </div>
+
+                        <!-- Media -->
+                        <div>
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="bg-yellow-500/20 text-yellow-400 text-xs font-bold px-2 py-1 rounded uppercase">Vai depender da Vibe</span>
+                            </div>
+                            <div class="flex gap-3 text-sm">
+                                <a href="/aquario" class="text-white hover:text-element-air transition-colors">Aquário ♒</a>
+                                <span class="text-gray-600">•</span>
+                                <a href="/libra" class="text-white hover:text-element-air transition-colors">Libra ♎ (Opostos atraem)</a>
+                            </div>
+                        </div>
+
+                        <!-- Baixa -->
+                        <div>
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="bg-red-500/20 text-red-400 text-xs font-bold px-2 py-1 rounded uppercase">Terapia de Casal Urgente</span>
+                            </div>
+                            <div class="flex gap-3 text-sm">
+                                <a href="/cancer" class="text-white hover:text-element-water transition-colors">Câncer ♋</a>
+                                <span class="text-gray-600">•</span>
+                                <a href="/capricornio" class="text-white hover:text-element-earth transition-colors">Capricórnio ♑</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CTA Mapa Astral -->
+        <section class="max-w-4xl mx-auto px-6 pb-24 text-center">
+            <div class="p-10 md:p-14 rounded-[2rem] bg-gradient-to-br from-white/5 to-transparent border border-white/10 relative overflow-hidden">
+                <div class="absolute inset-0 bg-element-fire/5"></div>
+                <div class="relative z-10">
+                    <h2 class="font-display text-3xl font-bold mb-4">Você é mais do que só Áries</h2>
+                    <p class="text-gray-400 mb-8 max-w-xl mx-auto font-light">
+                        Seu Sol está em Áries, mas onde está sua Lua? E sua Vênus? Faça seu mapa astral grátis e entenda sua identidade completa.
+                    </p>
+                    <a href="/#tools"
+                        class="inline-block bg-white text-black hover:bg-gray-200 transition-colors rounded-full px-8 py-4 font-bold text-sm w-full sm:w-auto text-center">
+                        Gerar Meu Mapa Astral Grátis
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="mt-auto border-t border-white/5 pt-16 pb-8 text-center bg-[#030305] relative z-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="font-display font-bold text-2xl mb-8 flex items-center justify-center gap-2">
+                <span class="text-aura-purple">✧</span> SeuSigno
+            </h2>
+            <nav aria-label="Navegação do Rodapé"
+                class="flex flex-wrap justify-center gap-6 text-sm text-gray-500 mb-12">
+                <a href="#about" class="hover:text-white transition-colors">Sobre Nós</a>
+                <a href="#privacy" class="hover:text-white transition-colors">Privacidade</a>
+                <a href="#terms" class="hover:text-white transition-colors">Termos</a>
+                <a href="#instagram" class="hover:text-aura-pink transition-colors">Instagram</a>
+                <a href="#tiktok" class="hover:text-aura-cyan transition-colors">TikTok</a>
+            </nav>
+            <p class="text-xs text-gray-600 font-light">© 2026 SeuSigno. Todos os direitos reservados. Não jogue a culpa
+                das suas escolhas em Mercúrio Retrógrado.</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPT MENU MOBILE -->
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const iconOpen = document.getElementById('menu-icon-open');
+        const iconClose = document.getElementById('menu-icon-close');
+        const body = document.body;
+
+        let menuOpen = false;
+
+        function toggleMenu() {
+            menuOpen = !menuOpen;
+
+            if (menuOpen) {
+                mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
+                mobileMenu.classList.add('opacity-100', 'pointer-events-auto');
+
+                iconOpen.classList.add('hidden');
+                iconClose.classList.remove('hidden');
+                body.style.overflow = 'hidden'; 
+            } else {
+                mobileMenu.classList.remove('opacity-100', 'pointer-events-auto');
+                mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+
+                iconClose.classList.add('hidden');
+                iconOpen.classList.remove('hidden');
+                body.style.overflow = ''; 
+            }
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
+
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                if (menuOpen) toggleMenu();
+            });
+        });
+    </script>
+</body>
+
+</html>
