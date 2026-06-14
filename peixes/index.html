@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peixes - Personalidade, Amor e Mapa Astral | Seu Signo</title>
+
+    <!-- SEO Básico -->
+    <meta name="description"
+        content="Descubra tudo sobre o signo de Peixes. A energia sonhadora da Água, traços de personalidade, red flags, compatibilidade no amor e como lidar com os místicos do zodíaco.">
+    <meta name="keywords"
+        content="signo de peixes, peixes, horóscopo peixes, perfil peixes, água, netuno, mapa astral peixes, compatibilidade peixes">
+    <meta name="author" content="SeuSigno">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://seusigno.com.br/peixes/">
+
+    <!-- Open Graph (Facebook/WhatsApp/LinkedIn) -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://seusigno.com.br/peixes/">
+    <meta property="og:title" content="Peixes - A Empatia e os Sonhos do Zodíaco">
+    <meta property="og:description"
+        content="Fugas da realidade, intuição afiada e um coração gigante. Decodifique a mente e o coração de Peixes.">
+    <!-- Imagem placeholder com a cor de Peixes (Verde Água / Teal) -->
+    <meta property="og:image" content="https://seusigno.com.br/peixes/og-peixes.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/jpeg">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://seusigno.com.br/peixes/">
+    <meta name="twitter:title" content="Peixes - A Empatia e os Sonhos do Zodíaco">
+    <meta name="twitter:description" content="Fugas da realidade, intuição afiada e um coração gigante.">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:site_name" content="Seu Signo">
+
+    <meta name="twitter:image" content="https://seusigno.com.br/peixes/og-peixes.jpg">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Fontes Modernas -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap"
+        rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Outfit"', 'sans-serif'],
+                        display: ['"Space Grotesk"', 'sans-serif']
+                    },
+                    colors: {
+                        aura: {
+                            purple: "#a855f7",
+                            pink: "#ec4899",
+                            cyan: "#06b6d4",
+                            dark: "#030305"
+                        },
+                        element: {
+                            fire: "#f97316",  // Laranja (Fogo)
+                            earth: "#10b981", // Verde (Terra)
+                            air: "#0ea5e9",   // Azul Claro (Ar)
+                            water: "#6366f1", // Indigo/Roxo (Água)
+                            all: "#facc15"
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #030305;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Fundo Levemente Estrelado */
+        .stars-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            background-image:
+                radial-gradient(circle at center, rgba(255, 255, 255, 0.15) 1px, transparent 1px),
+                radial-gradient(circle at center, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 120px 120px, 200px 200px;
+            background-position: 0 0, 50px 50px;
+            opacity: 0.5;
+        }
+
+        /* Auras de Fundo específicas para Peixes (Teal/Verde Água e Indigo suave) */
+        .aura-glow-pisces-1 {
+            position: fixed;
+            top: -10%;
+            left: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, rgba(45, 212, 191, 0.15) 0%, transparent 70%); /* Teal 400 */
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+        }
+
+        .aura-glow-pisces-2 {
+            position: fixed;
+            bottom: -10%;
+            right: -10%;
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle, rgba(129, 140, 248, 0.1) 0%, transparent 70%); /* Indigo 400 */
+            border-radius: 50%;
+            filter: blur(100px);
+            z-index: -1;
+        }
+
+        /* Glassmorphism Cards */
+        .bento-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 24px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .bento-card:hover {
+            border-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Gradiente para Peixes (Mar Profundo para Verde Água) */
+        .text-gradient-pisces {
+            background: linear-gradient(135deg, #2dd4bf, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Scrollbar customizada */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #030305;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Peixes - Personalidade, Amor e Mapa Astral",
+      "description": "Descubra tudo sobre o signo de Peixes: personalidade, sensibilidade, red flags e compatibilidade.",
+      "url": "https://seusigno.com.br/peixes/",
+      "datePublished": "2026-01-01",
+      "dateModified": "2026-06-14",
+      "author": {
+        "@type": "Organization",
+        "name": "Seu Signo",
+        "url": "https://seusigno.com.br/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Seu Signo",
+        "url": "https://seusigno.com.br/"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://seusigno.com.br/peixes/"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://seusigno.com.br/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Peixes",
+          "item": "https://seusigno.com.br/peixes/"
+        }
+      ]
+    }
+    </script>
+
+</head>
+
+<body class="antialiased flex flex-col min-h-screen relative">
+
+    <!-- Elementos de Fundo -->
+    <div class="stars-bg"></div>
+    <div class="aura-glow-pisces-1"></div>
+    <div class="aura-glow-pisces-2"></div>
+
+    <!-- HEADER -->
+    <header
+        class="fixed top-0 left-0 right-0 z-50 bg-[#030305]/70 backdrop-blur-xl border-b border-white/5 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+
+            <!-- Logo Adaptável -->
+            <a href="/" class="font-display font-bold text-2xl tracking-tighter flex items-center gap-3 z-50">
+                <span class="text-element-all">✦</span>
+                <span class="hidden sm:block">SeuSigno</span>
+            </a>
+
+            <!-- Navegação Desktop -->
+            <nav class="hidden md:flex gap-8 text-sm font-medium text-gray-400" aria-label="Navegação Principal">
+                <a href="/#matrix" class="hover:text-white transition-colors">Signos</a>
+                <a href="/#horoscopo" class="hover:text-white transition-colors">Horóscopo</a>
+                <a href="/#tools" class="hover:text-white transition-colors">Ferramentas</a>
+            </nav>
+
+            <!-- Botão Menu Mobile -->
+            <button class="md:hidden text-2xl text-white z-50 focus:outline-none" id="menu-btn" aria-label="Abrir Menu">
+                <svg id="menu-icon-open" class="w-6 h-6 transition-opacity" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                </svg>
+                <svg id="menu-icon-close" class="w-6 h-6 hidden transition-opacity" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Overlay Menu Mobile -->
+    <div id="mobile-menu"
+        class="fixed inset-0 pt-32 pb-10 overflow-y-auto bg-[#030305]/95 backdrop-blur-3xl flex flex-col items-center gap-10 text-2xl font-display opacity-0 pointer-events-none transition-all duration-300 z-40 md:hidden">
+        <a href="/#matrix" class="mobile-link text-gray-300 hover:text-white hover:scale-110 transition-all">Signos</a>
+        <a href="/#horoscopo"
+            class="mobile-link text-gray-300 hover:text-white hover:scale-110 transition-all">Horóscopo</a>
+        <a href="/#tools"
+            class="mobile-link text-gray-300 hover:text-white hover:scale-110 transition-all">Ferramentas</a>
+    </div>
+
+    <main class="flex-grow pt-[100px] md:pt-[140px]">
+        <!-- HERO SECTION PEIXES -->
+        <section class="max-w-4xl mx-auto px-6 text-center pb-16 relative">
+            
+            <!-- Breadcrumbs -->
+            <div class="flex items-center justify-center gap-2 text-xs font-medium text-gray-500 mb-8">
+                <a href="/" class="hover:text-white transition-colors">Zodíaco</a>
+                <span>/</span>
+                <span class="text-teal-400">Peixes</span>
+            </div>
+
+            <!-- Ícone Gigante -->
+            <div class="w-32 h-32 md:w-40 md:h-40 mx-auto rounded-full bg-white/5 border border-teal-400/20 flex items-center justify-center text-6xl md:text-7xl mb-8 shadow-[0_0_50px_rgba(45,212,191,0.15)]">
+                ♓
+            </div>
+
+            <!-- Títulos -->
+            <span class="inline-block py-1 px-4 rounded-full bg-teal-400/10 border border-teal-400/20 text-xs font-bold tracking-widest text-teal-400 mb-4 uppercase">
+                19 Fev - 20 Mar
+            </span>
+            <h1 class="font-display text-5xl md:text-7xl font-bold tracking-tight mb-6">
+                <span class="text-gradient-pisces">Peixes</span>
+            </h1>
+            <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed mb-12">
+                Os habitantes do mundo das nuvens. Empatia de milhões, intuição de bruxa e uma imaginação que cria roteiros incríveis (e trágicos) antes de dormir. Você não é distraído, apenas prefere a sua realidade alternativa.
+            </p>
+
+            <!-- Horóscopo do Dia (Largura Total na max-w-4xl) -->
+            <div class="bento-card p-8 md:p-10 w-full text-left relative overflow-hidden group border-teal-400/20">
+                <!-- Efeito de brilho no fundo -->
+                <div class="absolute -top-24 -right-24 w-64 h-64 bg-teal-400/10 blur-[60px] rounded-full group-hover:bg-teal-400/20 transition-colors duration-700"></div>
+                
+                <div class="relative z-10">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-4">
+                        <div class="flex items-center gap-3">
+                            <span class="bg-teal-400/20 text-teal-400 px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase border border-teal-400/30">
+                                Horóscopo do Dia
+                            </span>
+                            <span class="text-gray-500 text-sm font-medium">Domingo, 14 de Junho de 2026</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="flex flex-col items-center md:items-end">
+                                <span class="text-xs text-gray-500 uppercase tracking-wider mb-1">Vibe</span>
+                                <span class="text-white text-sm font-bold flex items-center gap-1">Delulu <span class="text-teal-400">🫧</span></span>
+                            </div>
+                            <div class="h-8 w-px bg-white/10 hidden md:block"></div>
+                            <div class="flex flex-col items-center md:items-start">
+                                <span class="text-xs text-gray-500 uppercase tracking-wider mb-1">Cor</span>
+                                <span class="text-white text-sm font-bold flex items-center gap-1"><div class="w-3 h-3 rounded-full bg-teal-300 shadow-[0_0_8px_rgba(94,234,212,0.8)]"></div> Espuma do Mar</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="font-display text-2xl font-bold mb-4 text-white">Proteja sua energia antes de salvar o mundo.</h3>
+                    
+                    <p class="text-gray-300 leading-relaxed font-light mb-6">
+                        Domingão com a sua energia netuniana batendo forte. Você provavelmente acordou com vontade de passar o dia inteiro na cama imaginando conversas que nunca aconteceram, escutando Lana Del Rey e chorando por um amor da época da escola. E tá tudo bem! Se o mundo real estiver muito caótico, coloque os fones de ouvido e fuja um pouco. Só não caia na armadilha de mandar mensagem para aquele "projeto de conserto" achando que você vai salvá-lo com seu amor. Spoiler: você não vai.
+                    </p>
+
+                    <div class="flex items-center gap-4 bg-black/40 p-4 rounded-xl border border-white/5 inline-flex">
+                        <span class="text-xs text-gray-500 uppercase tracking-wider">Números da Sorte:</span>
+                        <span class="font-display font-bold text-lg text-teal-400 tracking-widest">07 - 11 - 29 - 42</span>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- BENTO GRID - DETALHES DO SIGNO -->
+        <section class="max-w-7xl mx-auto px-6 pb-24">
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+
+                <!-- Stats Astrológicos (1 coluna) -->
+                <div class="bento-card p-6 flex flex-col justify-between col-span-1 lg:col-span-1 border-teal-400/10 hover:border-teal-400/30">
+                    <h3 class="font-display text-xl font-bold mb-6 text-white/80">Ficha Técnica</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between border-b border-white/5 pb-3">
+                            <span class="text-gray-500 text-sm">Elemento</span>
+                            <span class="font-bold text-element-water flex items-center gap-2">Água <span class="text-lg">💧</span></span>
+                        </div>
+                        <div class="flex items-center justify-between border-b border-white/5 pb-3">
+                            <span class="text-gray-500 text-sm">Planeta</span>
+                            <span class="font-bold text-teal-400 flex items-center gap-2">Netuno <span class="text-lg">🌊</span></span>
+                        </div>
+                        <div class="flex items-center justify-between border-b border-white/5 pb-3">
+                            <span class="text-gray-500 text-sm">Ritmo</span>
+                            <span class="font-bold text-white flex items-center gap-2">Mutável <span class="text-lg">🔄</span></span>
+                        </div>
+                        <div class="flex items-center justify-between pt-1">
+                            <span class="text-gray-500 text-sm">Símbolo</span>
+                            <span class="font-bold text-white">Os Peixes</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Personalidade (2 colunas) -->
+                <div class="bento-card p-8 md:p-10 col-span-1 md:col-span-2 lg:col-span-2 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-teal-400/5 blur-[50px] rounded-full group-hover:bg-teal-400/10 transition-colors duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="text-3xl mb-4">☁️</div>
+                        <h3 class="font-display text-2xl md:text-3xl font-bold mb-4">A Personalidade</h3>
+                        <p class="text-gray-300 leading-relaxed font-light mb-4">
+                            Sendo o último signo do zodíaco, Peixes carrega um pedacinho da sabedoria (e dos traumas) de todos os outros. Eles funcionam como uma esponja cósmica, absorvendo as energias, humores e problemas de quem está ao redor. Sua empatia é a sua maior força e a sua maior fraqueza.
+                        </p>
+                        <p class="text-gray-300 leading-relaxed font-light">
+                            Governados por Netuno, eles são artísticos, profundos e amam o escapismo. Quando a realidade fica pesada (e geralmente fica), a mente de um pisciano voa para outra dimensão. Parecem avoados, mas na verdade eles prestam atenção na energia do que não é dito.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Red Flags (1 coluna) -->
+                <div class="bento-card p-8 col-span-1 md:col-span-1 lg:col-span-1 border-red-500/10 hover:border-red-500/30">
+                    <div class="text-3xl mb-4">🚩</div>
+                    <h3 class="font-display text-xl font-bold mb-4">Red Flags</h3>
+                    <ul class="space-y-3 text-gray-400 font-light text-sm">
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-0.5">•</span>
+                            <span>Mestres do "ghosting" por pura exaustão mental.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-0.5">•</span>
+                            <span>Criam expectativas irreais e sofrem horrores por elas.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-0.5">•</span>
+                            <span>Complexo de salvador (amam tentar "consertar" pessoas ruins).</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-0.5">•</span>
+                            <span>Fugir dos problemas achando que eles vão desaparecer sozinhos.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- No Amor (2 colunas) -->
+                <div class="bento-card p-8 md:p-10 col-span-1 md:col-span-2 relative overflow-hidden group">
+                    <div class="absolute bottom-0 right-0 w-40 h-40 bg-indigo-500/10 blur-[40px] rounded-full group-hover:bg-indigo-500/20 transition-colors"></div>
+                    <div class="relative z-10">
+                        <div class="text-3xl mb-4">💌</div>
+                        <h3 class="font-display text-2xl font-bold mb-4">Peixes no Amor</h3>
+                        <p class="text-gray-300 leading-relaxed font-light mb-4">
+                            Piscianos amam a ideia do amor. Eles querem aquele romance de filme adolescente com trilha sonora indie de fundo. Eles se entregam 200%, perdoam o imperdoável e se fundem com a alma do parceiro (o que muitas vezes é um problema de limites emocionais).
+                        </p>
+                        <p class="text-gray-300 leading-relaxed font-light">
+                            O desafio de amar um pisciano é tirá-lo do mundo das ideias e lidar com o silêncio quando eles estão magoados. Se você passar segurança, der espaço para eles sentirem tudo e não debochar da sensibilidade deles, terá a pessoa mais doce e devota do mundo.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Match Cósmico (2 colunas) -->
+                <div class="bento-card p-8 md:p-10 col-span-1 md:col-span-1 lg:col-span-2">
+                    <div class="text-3xl mb-4">✨</div>
+                    <h3 class="font-display text-2xl font-bold mb-6">Match Cósmico</h3>
+                    
+                    <div class="space-y-5">
+                        <!-- Alta -->
+                        <div>
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="bg-green-500/20 text-green-400 text-xs font-bold px-2 py-1 rounded uppercase">Conexão Telepática e Lágrimas</span>
+                            </div>
+                            <div class="flex gap-3 text-sm">
+                                <a href="/cancer" class="text-white hover:text-element-water transition-colors">Câncer ♋</a>
+                                <span class="text-gray-600">•</span>
+                                <a href="/escorpiao" class="text-white hover:text-element-water transition-colors">Escorpião ♏</a>
+                                <span class="text-gray-600">•</span>
+                                <a href="/touro" class="text-white hover:text-element-earth transition-colors">Touro ♉</a>
+                            </div>
+                        </div>
+
+                        <!-- Media -->
+                        <div>
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="bg-yellow-500/20 text-yellow-400 text-xs font-bold px-2 py-1 rounded uppercase">Raízes para quem sabe voar</span>
+                            </div>
+                            <div class="flex gap-3 text-sm">
+                                <a href="/capricornio" class="text-white hover:text-element-earth transition-colors">Capricórnio ♑</a>
+                                <span class="text-gray-600">•</span>
+                                <a href="/virgem" class="text-white hover:text-element-earth transition-colors">Virgem ♍ (Opostos Complementares)</a>
+                            </div>
+                        </div>
+
+                        <!-- Baixa -->
+                        <div>
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="bg-red-500/20 text-red-400 text-xs font-bold px-2 py-1 rounded uppercase">Choque de Realidade Brusco</span>
+                            </div>
+                            <div class="flex gap-3 text-sm">
+                                <a href="/gemeos" class="text-white hover:text-element-air transition-colors">Gêmeos ♊</a>
+                                <span class="text-gray-600">•</span>
+                                <a href="/sagitario" class="text-white hover:text-element-fire transition-colors">Sagitário ♐</a>
+                                <span class="text-gray-600">•</span>
+                                <a href="/aries" class="text-white hover:text-element-fire transition-colors">Áries ♈</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CTA Mapa Astral -->
+        <section class="max-w-4xl mx-auto px-6 pb-24 text-center">
+            <div class="p-10 md:p-14 rounded-[2rem] bg-gradient-to-br from-white/5 to-transparent border border-white/10 relative overflow-hidden">
+                <div class="absolute inset-0 bg-teal-400/5"></div>
+                <div class="relative z-10">
+                    <h2 class="font-display text-3xl font-bold mb-4">Você é um universo de intuição</h2>
+                    <p class="text-gray-400 mb-8 max-w-xl mx-auto font-light">
+                        Entender o seu Sol em Peixes é só o começo. Como os outros astros afetam seu mundo emocional? Faça seu mapa astral e navegue nessas águas.
+                    </p>
+                    <a href="/#tools"
+                        class="inline-block bg-white text-black hover:bg-gray-200 transition-colors rounded-full px-8 py-4 font-bold text-sm w-full sm:w-auto text-center">
+                        Mergulhar no Meu Mapa Astral
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="mt-auto border-t border-white/5 pt-16 pb-8 text-center bg-[#030305] relative z-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="font-display font-bold text-2xl mb-8 flex items-center justify-center gap-2">
+                <span class="text-teal-400">✧</span> SeuSigno
+            </h2>
+            <nav aria-label="Navegação do Rodapé"
+                class="flex flex-wrap justify-center gap-6 text-sm text-gray-500 mb-12">
+                <a href="#about" class="hover:text-white transition-colors">Sobre Nós</a>
+                <a href="#privacy" class="hover:text-white transition-colors">Privacidade</a>
+                <a href="#terms" class="hover:text-white transition-colors">Termos</a>
+                <a href="#instagram" class="hover:text-aura-pink transition-colors">Instagram</a>
+                <a href="#tiktok" class="hover:text-aura-cyan transition-colors">TikTok</a>
+            </nav>
+            <p class="text-xs text-gray-600 font-light">© 2026 SeuSigno. Todos os direitos reservados. Não jogue a culpa
+                das suas escolhas em Mercúrio Retrógrado.</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPT MENU MOBILE -->
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const iconOpen = document.getElementById('menu-icon-open');
+        const iconClose = document.getElementById('menu-icon-close');
+        const body = document.body;
+
+        let menuOpen = false;
+
+        function toggleMenu() {
+            menuOpen = !menuOpen;
+
+            if (menuOpen) {
+                mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
+                mobileMenu.classList.add('opacity-100', 'pointer-events-auto');
+
+                iconOpen.classList.add('hidden');
+                iconClose.classList.remove('hidden');
+                body.style.overflow = 'hidden'; 
+            } else {
+                mobileMenu.classList.remove('opacity-100', 'pointer-events-auto');
+                mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+
+                iconClose.classList.add('hidden');
+                iconOpen.classList.remove('hidden');
+                body.style.overflow = ''; 
+            }
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
+
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                if (menuOpen) toggleMenu();
+            });
+        });
+    </script>
+</body>
+
+</html>
