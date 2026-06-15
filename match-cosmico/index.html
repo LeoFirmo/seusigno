@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Match Cósmico - Seu Signo</title>
+
+    <!-- SEO Básico -->
+    <meta name="description"
+        content="Descubra a compatibilidade astrológica entre você e seu crush. O Match Cósmico revela a química e os desafios do casal.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Fontes Modernas -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+    <!-- Configuração do Tailwind (Herdada da Home) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Outfit"', 'sans-serif'],
+                        display: ['"Space Grotesk"', 'sans-serif']
+                    },
+                    colors: {
+                        aura: {
+                            purple: "#a855f7",
+                            pink: "#ec4899",
+                            cyan: "#06b6d4",
+                            dark: "#030305"
+                        },
+                        element: {
+                            fire: "#f97316",
+                            earth: "#10b981",
+                            air: "#0ea5e9",
+                            water: "#6366f1",
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #030305;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Fundo Estrelado */
+        .stars-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            background-image:
+                radial-gradient(circle at center, rgba(255, 255, 255, 0.15) 1px, transparent 1px),
+                radial-gradient(circle at center, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 120px 120px, 200px 200px;
+            background-position: 0 0, 50px 50px;
+            opacity: 0.5;
+        }
+
+        /* Auras de Fundo focadas no Rosa/Roxo para o Match */
+        .aura-glow-1 {
+            position: fixed;
+            top: -10%;
+            left: -10%;
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+        }
+
+        .aura-glow-2 {
+            position: fixed;
+            bottom: -10%;
+            right: -10%;
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(100px);
+            z-index: -1;
+        }
+
+        /* Glassmorphism Cards */
+        .bento-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 24px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Gradiente para Textos */
+        .text-gradient {
+            background: linear-gradient(135deg, #ec4899, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Ocultar barra de rolagem mas manter funcionalidade */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #030305;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(236, 72, 153, 0.2);
+            border-radius: 4px;
+        }
+
+        /* Custom inputs */
+        .glass-input {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .glass-input:focus {
+            border-color: rgba(236, 72, 153, 0.5);
+            outline: none;
+            box-shadow: 0 0 15px rgba(236, 72, 153, 0.2);
+        }
+        
+        /* Ocultar nativo select arrow para custom styling */
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+            background-repeat: no-repeat;
+            background-position: right .7rem top 50%;
+            background-size: .65rem auto;
+        }
+        select option {
+            background-color: #030305;
+            color: white;
+        }
+
+        #result-section {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        #loading-section {
+            display: none;
+        }
+    </style>
+</head>
+
+<body class="antialiased flex flex-col min-h-screen relative">
+
+    <!-- Elementos de Fundo -->
+    <div class="stars-bg"></div>
+    <div class="aura-glow-1"></div>
+    <div class="aura-glow-2"></div>
+
+    <!-- HEADER (Simplificado) -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-[#030305]/70 backdrop-blur-xl border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="/" class="font-display font-bold text-2xl tracking-tighter flex items-center gap-3">
+                <span class="text-aura-pink">✦</span>
+                <span>SeuSigno</span>
+            </a>
+            <nav class="hidden md:flex gap-8 text-sm font-medium text-gray-400">
+                <a href="/" class="hover:text-white transition-colors">Home</a>
+                <a href="#" class="text-white">Match Cósmico</a>
+                <a href="#" class="hover:text-white transition-colors">Mapa Astral</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow pt-[100px] flex items-center justify-center min-h-screen px-4 pb-12">
+        <div class="w-full max-w-4xl relative">
+            
+            <!-- TOOL: FORM SECTION -->
+            <div id="form-section" class="flex flex-col items-center">
+                
+                <div class="text-center mb-10">
+                    <span class="inline-flex items-center gap-2 py-1 px-3 rounded-full bg-aura-pink/10 border border-aura-pink/20 text-xs font-medium tracking-wide text-aura-pink mb-4">
+                        <span class="text-sm">💞</span> Sinastria Básica
+                    </span>
+                    <h1 class="font-display text-4xl md:text-6xl font-bold tracking-tight mb-4">
+                        Match <span class="text-gradient">Cósmico</span>
+                    </h1>
+                    <p class="text-gray-400 max-w-lg mx-auto font-light">
+                        A química de vocês está escrita nas estrelas? Descubra o nível de compatibilidade astrológica.
+                    </p>
+                </div>
+
+                <div class="bento-card p-6 md:p-10 w-full relative">
+                    <form id="match-form" class="flex flex-col md:flex-row items-center gap-8 md:gap-4 relative z-10">
+                        
+                        <!-- Pessoa 1 -->
+                        <div class="flex-1 w-full bg-white/5 rounded-2xl p-6 border border-white/5">
+                            <h3 class="font-display text-xl font-bold mb-4 text-center">Você</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-xs text-gray-400 mb-1 ml-1 uppercase tracking-wider">Seu Nome (Opcional)</label>
+                                    <input type="text" id="name1" placeholder="Ex: Maria" class="glass-input w-full px-4 py-3 rounded-xl text-sm placeholder-gray-600">
+                                </div>
+                                <div>
+                                    <label class="block text-xs text-gray-400 mb-1 ml-1 uppercase tracking-wider">Sua Data de Nascimento *</label>
+                                    <input type="date" id="dob1" required class="glass-input w-full px-4 py-3 rounded-xl text-sm text-gray-300 cursor-pointer [color-scheme:dark]">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- VS/Icon Separador -->
+                        <div class="shrink-0 animate-float md:mt-10">
+                            <div class="w-12 h-12 md:w-16 md:h-16 rounded-full bg-gradient-to-tr from-aura-pink to-aura-purple flex items-center justify-center shadow-[0_0_30px_rgba(236,72,153,0.4)]">
+                                <span class="text-xl md:text-2xl text-white">VS</span>
+                            </div>
+                        </div>
+
+                        <!-- Pessoa 2 -->
+                        <div class="flex-1 w-full bg-white/5 rounded-2xl p-6 border border-white/5">
+                            <h3 class="font-display text-xl font-bold mb-4 text-center">O Crush</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-xs text-gray-400 mb-1 ml-1 uppercase tracking-wider">Nome do Crush (Opcional)</label>
+                                    <input type="text" id="name2" placeholder="Ex: João" class="glass-input w-full px-4 py-3 rounded-xl text-sm placeholder-gray-600">
+                                </div>
+                                <div>
+                                    <label class="block text-xs text-gray-400 mb-1 ml-1 uppercase tracking-wider">Data de Nascimento do Crush *</label>
+                                    <input type="date" id="dob2" required class="glass-input w-full px-4 py-3 rounded-xl text-sm text-gray-300 cursor-pointer [color-scheme:dark]">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="mt-8 text-center">
+                        <button type="submit" form="match-form" class="bg-white text-black hover:bg-gray-200 transition-all rounded-full px-10 py-4 font-bold text-sm w-full md:w-auto shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]">
+                            ✨ Descobrir Química
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LOADING SECTION -->
+            <div id="loading-section" class="flex-col items-center justify-center py-20 text-center">
+                <div class="relative w-24 h-24 mx-auto mb-6">
+                    <div class="absolute inset-0 border-t-2 border-aura-pink rounded-full animate-spin"></div>
+                    <div class="absolute inset-2 border-r-2 border-aura-purple rounded-full animate-spin" style="animation-direction: reverse; animation-duration: 1.5s;"></div>
+                    <div class="absolute inset-0 flex items-center justify-center text-3xl">🔮</div>
+                </div>
+                <h3 class="font-display text-2xl font-bold text-gradient animate-pulse">Lendo as estrelas e números...</h3>
+                <p class="text-gray-400 text-sm mt-2">Calculando interações astrológicas e cabalísticas</p>
+            </div>
+
+            <!-- RESULT SECTION -->
+            <div id="result-section" class="bento-card p-6 md:p-10 text-center relative overflow-hidden w-full">
+                <!-- Aura de Fundo do Card de Resultado -->
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gradient-to-b from-aura-pink/10 to-transparent z-0 pointer-events-none"></div>
+
+                <div class="relative z-10 flex flex-col items-center w-full">
+                    
+                    <!-- Veredito Final (Topo) -->
+                    <div class="text-center mb-10 mt-4">
+                        <span class="inline-block py-1 px-3 rounded-full bg-white/5 border border-white/10 text-xs font-medium tracking-wide text-gray-300 mb-4 uppercase">Veredito Cósmico</span>
+                        
+                        <div class="relative w-48 h-48 mx-auto flex items-center justify-center mb-6">
+                            <svg class="absolute inset-0 w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="6" />
+                                <circle id="final-circle" cx="50" cy="50" r="45" fill="none" stroke="url(#gradient)" stroke-width="6" stroke-dasharray="283" stroke-dashoffset="283" class="transition-all duration-1000 ease-out" stroke-linecap="round" />
+                                <defs>
+                                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="#ec4899" />
+                                        <stop offset="100%" stop-color="#a855f7" />
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                            <div class="flex flex-col items-center">
+                                <span id="final-percentage" class="font-display text-5xl font-bold text-white">0%</span>
+                                <span class="text-xs text-gray-400 uppercase tracking-widest mt-1">Match Final</span>
+                            </div>
+                        </div>
+
+                        <h2 id="final-title" class="font-display text-3xl font-bold mb-4 text-gradient"></h2>
+                        <div class="bg-black/30 border border-white/5 rounded-2xl p-6 text-center max-w-2xl w-full mx-auto">
+                            <p id="final-desc" class="text-gray-300 leading-relaxed font-light text-lg italic"></p>
+                        </div>
+                    </div>
+
+                    <hr class="w-full border-white/5 mb-10">
+
+                    <!-- Detalhes: Astrologia e Cabala -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-4xl mx-auto mb-10">
+                        
+                        <!-- Box Astrologia -->
+                        <div class="bg-white/5 border border-white/5 rounded-2xl p-6 flex flex-col items-center text-center">
+                            <h4 class="font-display font-bold text-lg mb-4 text-gray-200">Astrologia</h4>
+                            <div class="flex items-center gap-3 mb-6">
+                                <span id="res-emoji1" class="text-3xl bg-black/30 w-12 h-12 rounded-full flex items-center justify-center border border-white/5">♈</span>
+                                <span class="text-element-fire text-xl animate-pulse">✦</span>
+                                <span id="res-emoji2" class="text-3xl bg-black/30 w-12 h-12 rounded-full flex items-center justify-center border border-white/5">♉</span>
+                            </div>
+                            
+                            <div class="relative w-28 h-28 flex items-center justify-center mb-4">
+                                <svg class="absolute inset-0 w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="6" />
+                                    <circle id="astro-circle" cx="50" cy="50" r="45" fill="none" stroke="#f97316" stroke-width="6" stroke-dasharray="283" stroke-dashoffset="283" class="transition-all duration-1000 ease-out" stroke-linecap="round" />
+                                </svg>
+                                <span id="astro-percentage" class="font-display text-2xl font-bold">0%</span>
+                            </div>
+                            <h5 id="astro-title" class="font-bold text-sm mb-2 text-white"></h5>
+                            <p id="astro-desc" class="text-xs text-gray-400 leading-relaxed"></p>
+                        </div>
+
+                        <!-- Box Cabala -->
+                        <div class="bg-white/5 border border-white/5 rounded-2xl p-6 flex flex-col items-center text-center">
+                            <h4 class="font-display font-bold text-lg mb-4 text-gray-200">Numerologia Cabalística</h4>
+                            <div class="flex items-center gap-3 mb-6">
+                                <span class="text-2xl font-display font-bold text-aura-cyan bg-black/30 w-12 h-12 rounded-full flex items-center justify-center border border-white/5" id="res-num1">1</span>
+                                <span class="text-aura-cyan text-xl animate-pulse">✦</span>
+                                <span class="text-2xl font-display font-bold text-aura-cyan bg-black/30 w-12 h-12 rounded-full flex items-center justify-center border border-white/5" id="res-num2">2</span>
+                            </div>
+                            
+                            <div class="relative w-28 h-28 flex items-center justify-center mb-4">
+                                <svg class="absolute inset-0 w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="6" />
+                                    <circle id="kabbalah-circle" cx="50" cy="50" r="45" fill="none" stroke="#06b6d4" stroke-width="6" stroke-dasharray="283" stroke-dashoffset="283" class="transition-all duration-1000 ease-out" stroke-linecap="round" />
+                                </svg>
+                                <span id="kabbalah-percentage" class="font-display text-2xl font-bold">0%</span>
+                            </div>
+                            <h5 id="kabbalah-title" class="font-bold text-sm mb-2 text-white"></h5>
+                            <p id="kabbalah-desc" class="text-xs text-gray-400 leading-relaxed"></p>
+                        </div>
+
+                    </div>
+
+                    <button onclick="resetTool()" class="bg-white hover:bg-gray-200 text-black transition-colors rounded-full px-10 py-4 font-bold text-sm shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:scale-105">
+                        ← Fazer novo teste
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-white/5 py-8 text-center bg-[#030305] relative z-10 mt-auto">
+        <div class="max-w-7xl mx-auto px-6">
+            <p class="text-xs text-gray-600 font-light">© 2026 SeuSigno. O universo conspira a seu favor.</p>
+        </div>
+    </footer>
+
+    <!-- LOGIC SCRIPT -->
+    <script>
+        // Dados dos signos e seus elementos astrológicos
+        const zodiacData = {
+            aries: { name: 'Áries', emoji: '♈', element: 'fire' },
+            touro: { name: 'Touro', emoji: '♉', element: 'earth' },
+            gemeos: { name: 'Gêmeos', emoji: '♊', element: 'air' },
+            cancer: { name: 'Câncer', emoji: '♋', element: 'water' },
+            leao: { name: 'Leão', emoji: '♌', element: 'fire' },
+            virgem: { name: 'Virgem', emoji: '♍', element: 'earth' },
+            libra: { name: 'Libra', emoji: '♎', element: 'air' },
+            escorpiao: { name: 'Escorpião', emoji: '♏', element: 'water' },
+            sagitario: { name: 'Sagitário', emoji: '♐', element: 'fire' },
+            capricornio: { name: 'Capricórnio', emoji: '♑', element: 'earth' },
+            aquario: { name: 'Aquário', emoji: '♒', element: 'air' },
+            peixes: { name: 'Peixes', emoji: '♓', element: 'water' }
+        };
+
+        // Descobre o signo baseado na data de nascimento
+        function getZodiacSign(dateString) {
+            if (!dateString) return null;
+            const date = new Date(dateString);
+            const month = date.getUTCMonth() + 1; // 1 a 12
+            const day = date.getUTCDate();
+
+            if ((month === 3 && day >= 21) || (month === 4 && day <= 19)) return 'aries';
+            if ((month === 4 && day >= 20) || (month === 5 && day <= 20)) return 'touro';
+            if ((month === 5 && day >= 21) || (month === 6 && day <= 20)) return 'gemeos';
+            if ((month === 6 && day >= 21) || (month === 7 && day <= 22)) return 'cancer';
+            if ((month === 7 && day >= 23) || (month === 8 && day <= 22)) return 'leao';
+            if ((month === 8 && day >= 23) || (month === 9 && day <= 22)) return 'virgem';
+            if ((month === 9 && day >= 23) || (month === 10 && day <= 22)) return 'libra';
+            if ((month === 10 && day >= 23) || (month === 11 && day <= 21)) return 'escorpiao';
+            if ((month === 11 && day >= 22) || (month === 12 && day <= 21)) return 'sagitario';
+            if ((month === 12 && day >= 22) || (month === 1 && day <= 19)) return 'capricornio';
+            if ((month === 1 && day >= 20) || (month === 2 && day <= 18)) return 'aquario';
+            if ((month === 2 && day >= 19) || (month === 3 && day <= 20)) return 'peixes';
+            
+            return null; // Fallback
+        }
+
+        // Lógica de compatibilidade baseada em Elementos
+        function calculateCompatibility(sign1, sign2) {
+            const e1 = zodiacData[sign1].element;
+            const e2 = zodiacData[sign2].element;
+
+            let baseScore = 50;
+
+            // Fogo & Ar combinam (Extrovertidos) / Terra & Água combinam (Introvertidos)
+            if (e1 === e2) {
+                baseScore = 85; // Mesmo elemento = ótima química, muito em comum
+            } else if (
+                (e1 === 'fire' && e2 === 'air') || (e1 === 'air' && e2 === 'fire') ||
+                (e1 === 'earth' && e2 === 'water') || (e1 === 'water' && e2 === 'earth')
+            ) {
+                baseScore = 95; // Elementos complementares = Almas gêmeas
+            } else if (
+                (e1 === 'fire' && e2 === 'water') || (e1 === 'water' && e2 === 'fire') ||
+                (e1 === 'earth' && e2 === 'air') || (e1 === 'air' && e2 === 'earth')
+            ) {
+                baseScore = 40; // Elementos opostos conflitantes = Desafio
+            } else {
+                baseScore = 60; // Fogo+Terra ou Ar+Água = Neutro/Requer esforço
+            }
+
+            // Gerar uma pequena variação previsível baseada nos nomes dos signos (para não ficar sempre redondo)
+            // Isso garante que Áries + Touro sempre dê o mesmo número específico
+            const variation = (sign1.charCodeAt(0) + sign2.charCodeAt(0)) % 10;
+            
+            // Fator de ordem: Se forem opostos complementares perfeitos na roda (ex: Áries/Libra), bônus!
+            const wheelOrder = Object.keys(zodiacData);
+            const idx1 = wheelOrder.indexOf(sign1);
+            const idx2 = wheelOrder.indexOf(sign2);
+            if (Math.abs(idx1 - idx2) === 6) {
+                baseScore = 98; // Oposição exata no zodíaco atrai muito!
+            }
+
+            let finalScore = baseScore + variation - 5; // -5 a +4 de variação
+            if (finalScore > 100) finalScore = 100;
+            if (finalScore < 10) finalScore = 15;
+
+            return finalScore;
+        }
+
+        // Textos de Resultado baseados na %
+        function getResultText(score) {
+            if (score >= 90) {
+                return {
+                    title: "Almas Gêmeas Astrológicas! ✨",
+                    desc: "A química de vocês é inexplicável. A conexão elemental é instantânea e natural. Os signos se complementam perfeitamente."
+                };
+            } else if (score >= 70) {
+                return {
+                    title: "Match de Respeito! 🔥",
+                    desc: "Tem muita atração rolando. A convivência flui bem, com elementos que se ajudam e estimulam o crescimento mutuo."
+                };
+            } else if (score >= 50) {
+                return {
+                    title: "Complicado e Perfeitinho ⚖️",
+                    desc: "Vocês são diferentes astrológicamente e isso pode gerar tanto fascínio quanto irritação. Os opostos se atraem."
+                };
+            } else {
+                return {
+                    title: "Livramento ou Desafio? 🚩",
+                    desc: "A vibe é intensa, mas os elementos entram em atrito facilmente. Vocês falam línguas diferentes emocionalmente."
+                };
+            }
+        }
+
+        // --- LÓGICA DE NUMEROLOGIA (Caminho de Vida / Destino) ---
+
+        // Calcula o Número de Destino (Soma dos dígitos da data de nascimento)
+        function getDestinyNumber(dateString) {
+            if (!dateString) return 0;
+            // Quebra a data (ex: 1994-06-23 -> 1+9+9+4+0+6+2+3 = 34)
+            let sum = dateString.replace(/-/g, '').split('').reduce((acc, curr) => acc + parseInt(curr), 0);
+            return reduceToSingleDigit(sum);
+        }
+
+        // Redução Teosófica (Para no 1 a 9, 11 e 22)
+        function reduceToSingleDigit(sum) {
+            // Loop: Enquanto o número for maior que 9 e NÃO for número mestre (11 ou 22)
+            while(sum > 9 && sum !== 11 && sum !== 22) {
+                sum = sum.toString().split('').reduce((a,b) => parseInt(a)+parseInt(b), 0);
+            }
+            return sum || 1; // Fallback
+        }
+
+        function calculateKabbalahCompatibility(num1, num2) {
+            // Grupos de ressonância numerológica (Agora englobando 11 e 22)
+            const matches = {
+                1: [1,5,7,9,11], 2: [2,4,8,11,22], 3: [3,6,9], 4: [2,4,8,22],
+                5: [1,5,7], 6: [3,6,9,22], 7: [1,5,7,11], 8: [2,4,8,22], 9: [1,3,6,9,11],
+                11: [1,2,7,9,11,22], 22: [2,4,6,8,11,22]
+            };
+            let score = 50;
+            
+            if (num1 === num2) {
+                score = 95; // Mesma vibração exata
+            } else if (matches[num1] && matches[num1].includes(num2)) {
+                score = 88; // Harmonia natural baseada nos grupos
+            } else if ((num1 % 2 === num2 % 2) && num1 < 10 && num2 < 10) {
+                score = 65; // Ambos pares ou ímpares de dígito único (frequência parecida)
+            } else {
+                score = 42; // Conflito de vibrações
+            }
+
+            // Pequena variação para dar dinamicidade visual
+            score += (num1 + num2) % 10 - 5;
+            if (score > 100) score = 100;
+            if (score < 10) score = 15;
+            return score;
+        }
+
+        function getKabbalahText(score) {
+            if (score >= 85) return { title: "Encontro de Almas 🌌", desc: "Na Cabala, seus caminhos vibram na mesma Sefira. Há uma profunda ligação espiritual e os fios do destino estão entrelaçados." };
+            if (score >= 60) return { title: "Sintonia de Destinos 🔄", desc: "As energias mostram que caminham em direções compatíveis. Uma relação que atrai luz (Or) e evolução mútua na Árvore da Vida." };
+            if (score >= 45) return { title: "Frequências Distintas 📻", desc: "Seus destinos apontam para missões diferentes. A relação funcionará como um 'Tikkun' (correção de alma e muito aprendizado)." };
+            return { title: "Desafio Cármico 🚧", desc: "Na Árvore da Vida, as energias entram em forte atrito. Exigirá muita maturidade espiritual para alinhar propósitos sem conflito." };
+        }
+
+        // --- LÓGICA DO VEREDITO FINAL ---
+        function getFinalText(score) {
+            if (score >= 85) return { title: "Match Cósmico Absoluto! 💖", desc: "Casem agora! As estrelas e a numerologia conspiram totalmente a favor dessa união. A conexão de vocês é rara e poderosa." };
+            if (score >= 70) return { title: "Forte Conexão! ✨", desc: "Tem muito potencial! A sintonia astrológica e vibracional de vocês é forte o suficiente para superar as adversidades naturais." };
+            if (score >= 50) return { title: "Relação de Crescimento ⚖️", desc: "Não vai ser fácil, mas pode ser transformador. Exige maturidade e muito diálogo para alinhar os dois mundos." };
+            return { title: "Alerta Vermelho 🚩", desc: "As energias indicam atritos constantes na forma de agir e vibrar. Se quiserem tentar, preparem o estoque de paciência." };
+        }
+
+        // Animação Genérica para as barras de progresso
+        function animateProgress(elementId, textId, targetScore) {
+            const circle = document.getElementById(elementId);
+            const text = document.getElementById(textId);
+            
+            const circumference = 283; 
+            const offset = circumference - (targetScore / 100) * circumference;
+            
+            setTimeout(() => {
+                circle.style.strokeDashoffset = offset;
+                
+                let current = 0;
+                const interval = setInterval(() => {
+                    if (current >= targetScore) {
+                        clearInterval(interval);
+                        text.innerText = targetScore + '%';
+                    } else {
+                        current++;
+                        text.innerText = current + '%';
+                    }
+                }, 15);
+            }, 100);
+        }
+
+        // Handle Form Submit
+        document.getElementById('match-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name1 = document.getElementById('name1').value.trim() || 'Você';
+            const name2 = document.getElementById('name2').value.trim() || 'Crush';
+            const dob1 = document.getElementById('dob1').value;
+            const dob2 = document.getElementById('dob2').value;
+
+            if (!dob1 || !dob2) return;
+
+            // UI Transitions: Form -> Loading
+            document.getElementById('form-section').style.display = 'none';
+            document.getElementById('loading-section').style.display = 'flex';
+
+            setTimeout(() => {
+                // Descobrir Signos Automaticamente
+                const sign1Key = getZodiacSign(dob1);
+                const sign2Key = getZodiacSign(dob2);
+
+                if(!sign1Key || !sign2Key) {
+                    alert("Por favor, insira datas válidas.");
+                    resetTool();
+                    return;
+                }
+
+                // 1. Cálculo Astros
+                const astroScore = calculateCompatibility(sign1Key, sign2Key);
+                const astroData = getResultText(astroScore);
+
+                // 2. Cálculo Numerologia (Apenas Destino / Data de Nascimento)
+                const personalNum1 = getDestinyNumber(dob1);
+                const personalNum2 = getDestinyNumber(dob2);
+
+                const kabbalahScore = calculateKabbalahCompatibility(personalNum1, personalNum2);
+                const kabbalahData = getKabbalahText(kabbalahScore);
+
+                // 3. Média Final
+                const finalScore = Math.round((astroScore + kabbalahScore) / 2);
+                const finalData = getFinalText(finalScore);
+
+                // Preencher DOM (Astrologia)
+                document.getElementById('res-emoji1').innerText = zodiacData[sign1Key].emoji;
+                document.getElementById('res-emoji2').innerText = zodiacData[sign2Key].emoji;
+                document.getElementById('astro-title').innerText = astroData.title;
+                document.getElementById('astro-desc').innerText = astroData.desc;
+
+                // Preencher DOM (Cabala/Numerologia)
+                document.getElementById('res-num1').innerText = personalNum1;
+                document.getElementById('res-num2').innerText = personalNum2;
+                document.getElementById('kabbalah-title').innerText = kabbalahData.title;
+                document.getElementById('kabbalah-desc').innerText = kabbalahData.desc;
+
+                // Preencher DOM (Final)
+                document.getElementById('final-title').innerText = finalData.title;
+                document.getElementById('final-desc').innerText = finalData.desc;
+
+                // UI Transitions: Loading -> Result
+                document.getElementById('loading-section').style.display = 'none';
+                const resultSec = document.getElementById('result-section');
+                resultSec.style.display = 'block';
+                
+                // Fade in
+                setTimeout(() => {
+                    resultSec.style.opacity = '1';
+                    animateProgress('astro-circle', 'astro-percentage', astroScore);
+                    animateProgress('kabbalah-circle', 'kabbalah-percentage', kabbalahScore);
+                    animateProgress('final-circle', 'final-percentage', finalScore);
+                }, 50);
+
+            }, 2500); // 2.5 segundos de loading
+        });
+
+        // Reset Tool function
+        function resetTool() {
+            const resultSec = document.getElementById('result-section');
+            resultSec.style.opacity = '0';
+            
+            setTimeout(() => {
+                resultSec.style.display = 'none';
+                // Resetar círculos
+                document.getElementById('astro-circle').style.strokeDashoffset = '283';
+                document.getElementById('kabbalah-circle').style.strokeDashoffset = '283';
+                document.getElementById('final-circle').style.strokeDashoffset = '283';
+                
+                document.getElementById('astro-percentage').innerText = '0%';
+                document.getElementById('kabbalah-percentage').innerText = '0%';
+                document.getElementById('final-percentage').innerText = '0%';
+                
+                // Mostrar form
+                document.getElementById('form-section').style.display = 'flex';
+            }, 500);
+        }
+    </script>
+</body>
+
+</html>
