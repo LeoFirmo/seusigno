@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR" class="scroll-smooth">
 
@@ -211,6 +212,9 @@
 </head>
 
 <body class="antialiased flex flex-col min-h-screen relative">
+    
+    <!-- Pixel de rastreio orgânico inicial -->
+    <img src="https://tracker-email-tau.vercel.app/api/imagem?t=Organico_site_SeuSigno_cancer" width="1" height="1" style="display:none;" />
 
     <!-- Elementos de Fundo -->
     <div class="stars-bg"></div>
@@ -288,7 +292,7 @@
                 A "mãe" do rolê. Intuição de milhões, memória de elefante e um coração que sente literalmente <i>tudo</i>. Você não chora à toa, é que o mundo que é intenso demais.
             </p>
 
-            <!-- Horóscopo do Dia (Largura Total na max-w-4xl) -->
+            <!-- Horóscopo do Dia Dinâmico -->
             <div class="bento-card p-8 md:p-10 w-full text-left relative overflow-hidden group border-element-water/20">
                 <!-- Efeito de brilho no fundo -->
                 <div class="absolute -top-24 -right-24 w-64 h-64 bg-element-water/10 blur-[60px] rounded-full group-hover:bg-element-water/20 transition-colors duration-700"></div>
@@ -299,30 +303,37 @@
                             <span class="bg-element-water/20 text-element-water px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase border border-element-water/30">
                                 Horóscopo do Dia
                             </span>
-                            <span class="text-gray-500 text-sm font-medium">Domingo, 14 de Junho de 2026</span>
+                            <span id="json-data" class="text-gray-500 text-sm font-medium">Carregando...</span>
                         </div>
                         <div class="flex gap-4">
                             <div class="flex flex-col items-center md:items-end">
                                 <span class="text-xs text-gray-500 uppercase tracking-wider mb-1">Vibe</span>
-                                <span class="text-white text-sm font-bold flex items-center gap-1">Nostálgica <span class="text-element-water">🥺</span></span>
+                                <span class="text-white text-sm font-bold flex items-center gap-1"><span id="json-vibe" class="capitalize">Carregando...</span></span>
                             </div>
                             <div class="h-8 w-px bg-white/10 hidden md:block"></div>
                             <div class="flex flex-col items-center md:items-start">
                                 <span class="text-xs text-gray-500 uppercase tracking-wider mb-1">Cor</span>
-                                <span class="text-white text-sm font-bold flex items-center gap-1"><div class="w-3 h-3 rounded-full bg-slate-300 shadow-[0_0_8px_rgba(203,213,225,0.8)]"></div> Prata Lunar</span>
+                                <span class="text-white text-sm font-bold flex items-center gap-1"><div class="w-3 h-3 rounded-full bg-slate-300 shadow-[0_0_8px_rgba(203,213,225,0.8)]"></div> <span id="json-cor" class="capitalize">Carregando...</span></span>
                             </div>
                         </div>
                     </div>
 
-                    <h3 class="font-display text-2xl font-bold mb-4 text-white">Dia de focar no seu skincare emocional.</h3>
+                    <h3 id="json-titulo" class="font-display text-2xl font-bold mb-4 text-white">Carregando...</h3>
                     
-                    <p class="text-gray-300 leading-relaxed font-light mb-6">
-                        Domingo é dia de comfort zone. A Lua (sua regente maravilhosa) está pedindo para você ignorar as mensagens que dão gatilho e proteger sua paz. Se bater aquela vontade do nada de stalkear o ex de 3 anos atrás ou reler mensagens antigas, tranque o celular na gaveta e vá maratonar sua série favorita com uma bacia de pipoca. Seu mood hoje precisa de acolhimento, e não tem ninguém melhor para te dar colo do que você mesmo(a).
+                    <p id="json-texto" class="text-gray-300 leading-relaxed font-light mb-6">
+                        Carregando...
                     </p>
 
-                    <div class="flex items-center gap-4 bg-black/40 p-4 rounded-xl border border-white/5 inline-flex">
-                        <span class="text-xs text-gray-500 uppercase tracking-wider">Números da Sorte:</span>
-                        <span class="font-display font-bold text-lg text-element-water tracking-widest">02 - 16 - 27 - 45</span>
+                    <div class="flex flex-wrap items-center gap-4 mt-6">
+                        <div class="flex items-center gap-4 bg-black/40 p-4 rounded-xl border border-white/5 inline-flex">
+                            <span class="text-xs text-gray-500 uppercase tracking-wider">Números da Sorte:</span>
+                            <span id="json-numeros" class="font-display font-bold text-lg text-element-water tracking-widest">Carregando...</span>
+                        </div>
+                        
+                        <!-- Botão Match Cósmico -->
+                        <a href="https://seusigno.com.br/match-cosmico" class="inline-block bg-element-water/20 text-element-water hover:bg-element-water/30 transition-colors rounded-xl px-6 py-4 font-bold text-sm">
+                            Match Cósmico
+                        </a>
                     </div>
                 </div>
             </div>
@@ -459,7 +470,7 @@
             </div>
         </section>
 
-        <!-- CTA Mapa Astral -->
+        <!-- CTA Mapa Astral Dinâmico com disparo de Tracker -->
         <section class="max-w-4xl mx-auto px-6 pb-24 text-center">
             <div class="p-10 md:p-14 rounded-[2rem] bg-gradient-to-br from-white/5 to-transparent border border-white/10 relative overflow-hidden">
                 <div class="absolute inset-0 bg-element-water/5"></div>
@@ -468,10 +479,10 @@
                     <p class="text-gray-400 mb-8 max-w-xl mx-auto font-light">
                         Ok, você é intenso, mas de onde vem tanto sentimento? Sua Lua ou seu Ascendente podem explicar. Faça seu mapa astral e descubra.
                     </p>
-                    <a href="/#tools"
-                        class="inline-block bg-white text-black hover:bg-gray-200 transition-colors rounded-full px-8 py-4 font-bold text-sm w-full sm:w-auto text-center">
+                    <button id="btn-mapa-astral"
+                        class="inline-block bg-white text-black hover:bg-gray-200 transition-colors rounded-full px-8 py-4 font-bold text-sm w-full sm:w-auto text-center cursor-pointer">
                         Desvendar Meu Mapa Astral
-                    </a>
+                    </button>
                 </div>
             </div>
         </section>
@@ -497,8 +508,9 @@
         </div>
     </footer>
 
-    <!-- SCRIPT MENU MOBILE -->
+    <!-- SCRIPT GERAL -->
     <script>
+        // Lógica do Menu Mobile
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         const iconOpen = document.getElementById('menu-icon-open');
@@ -532,6 +544,44 @@
         document.querySelectorAll('.mobile-link').forEach(link => {
             link.addEventListener('click', () => {
                 if (menuOpen) toggleMenu();
+            });
+        });
+
+        // Lógica da leitura do arquivo JSON e Redirecionamento/Tracking do Botão
+        let mapaLink = "https://hotm.io/UXXGOi"; // Link fallback de segurança
+
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('../horoscopo_aleatorio.json')
+                .then(response => response.json())
+                .then(data => {
+                    const signoData = data['cancer'];
+                    if(signoData) {
+                        document.getElementById('json-data').innerText = signoData.data.toLowerCase();
+                        document.getElementById('json-vibe').innerText = signoData.vibe.toLowerCase();
+                        document.getElementById('json-cor').innerText = signoData.cor.toLowerCase();
+                        document.getElementById('json-titulo').innerText = signoData.titulo.toLowerCase();
+                        document.getElementById('json-texto').innerText = signoData.texto.toLowerCase();
+                        document.getElementById('json-numeros').innerText = signoData.numeros.toLowerCase();
+                        mapaLink = signoData.link_mapa_astral;
+                    }
+                })
+                .catch(error => console.error('erro ao carregar o arquivo json:', error));
+
+            // Evento de clique para disparar o tracker e redirecionar
+            document.getElementById('btn-mapa-astral').addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // dispara o pixel de rastreio de clique
+                const trackerUrl = "https://tracker-email-tau.vercel.app/api/imagem?t=Organico_site_SeuSigno_cancer_MAPA-ASTRAL";
+                const imgTracker = new Image();
+                imgTracker.src = trackerUrl;
+                
+                // aguarda 250ms para garantir que a requisição de rede do tracker foi enviada antes de sair
+                setTimeout(function() {
+                    if (mapaLink) {
+                        window.location.href = mapaLink;
+                    }
+                }, 250);
             });
         });
     </script>
