@@ -213,7 +213,7 @@
 
 <body class="antialiased flex flex-col min-h-screen relative">
     
-    <!-- Pixel de rastreio -->
+    <!-- Pixel de rastreio orgânico inicial -->
     <img src="https://tracker-email-tau.vercel.app/api/imagem?t=Organico_site_SeuSigno_aquario" width="1" height="1" style="display:none;" />
 
     <!-- Elementos de Fundo -->
@@ -308,7 +308,7 @@
                         <div class="flex gap-4">
                             <div class="flex flex-col items-center md:items-end">
                                 <span class="text-xs text-gray-500 uppercase tracking-wider mb-1">Vibe</span>
-                                <span class="text-white text-sm font-bold flex items-center gap-1"><span id="json-vibe" class="capitalize">Carregando...</span> </span>
+                                <span class="text-white text-sm font-bold flex items-center gap-1"><span id="json-vibe" class="capitalize">Carregando...</span></span>
                             </div>
                             <div class="h-8 w-px bg-white/10 hidden md:block"></div>
                             <div class="flex flex-col items-center md:items-start">
@@ -330,7 +330,7 @@
                             <span id="json-numeros" class="font-display font-bold text-lg text-element-air tracking-widest">Carregando...</span>
                         </div>
                         
-                        <!-- Botão Match Cósmico Adicionado -->
+                        <!-- Botão Match Cósmico -->
                         <a href="https://seusigno.com.br/match-cosmico" class="inline-block bg-element-air/20 text-element-air hover:bg-element-air/30 transition-colors rounded-xl px-6 py-4 font-bold text-sm">
                             Match Cósmico
                         </a>
@@ -470,7 +470,7 @@
             </div>
         </section>
 
-        <!-- CTA Mapa Astral Dinâmico com a Tag Button -->
+        <!-- CTA Mapa Astral Dinâmico com disparo de Tracker -->
         <section class="max-w-4xl mx-auto px-6 pb-24 text-center">
             <div class="p-10 md:p-14 rounded-[2rem] bg-gradient-to-br from-white/5 to-transparent border border-white/10 relative overflow-hidden">
                 <div class="absolute inset-0 bg-element-air/5"></div>
@@ -547,7 +547,7 @@
             });
         });
 
-        // Lógica da leitura do arquivo JSON e Redirecionamento do Botão
+        // Lógica da leitura do arquivo JSON e Redirecionamento/Tracking do Botão
         let mapaLink = "https://hotm.io/UXXGOi"; // Link fallback de segurança
 
         document.addEventListener("DOMContentLoaded", function() {
@@ -567,12 +567,21 @@
                 })
                 .catch(error => console.error('Erro ao carregar o arquivo JSON:', error));
 
-            // Evento de clique para o botão que redireciona ao mapa astral ocultando a URL
+            // Evento de clique para disparar o tracker e redirecionar
             document.getElementById('btn-mapa-astral').addEventListener('click', function(e) {
                 e.preventDefault();
-                if (mapaLink) {
-                    window.location.href = mapaLink;
-                }
+                
+                // dispara o pixel de rastreio de clique
+                const trackerUrl = "https://tracker-email-tau.vercel.app/api/imagem?t=Organico_site_SeuSigno_aquario_MAPA-ASTRAL";
+                const imgTracker = new Image();
+                imgTracker.src = trackerUrl;
+                
+                // aguarda 250ms para garantir que a requisição de rede do tracker foi enviada antes de sair
+                setTimeout(function() {
+                    if (mapaLink) {
+                        window.location.href = mapaLink;
+                    }
+                }, 250);
             });
         });
     </script>
