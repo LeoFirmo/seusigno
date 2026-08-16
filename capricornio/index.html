@@ -211,6 +211,9 @@
 </head>
 
 <body class="antialiased flex flex-col min-h-screen relative">
+    
+    <!-- Pixel de rastreio orgânico inicial -->
+    <img src="https://tracker-email-tau.vercel.app/api/imagem?t=Organico_site_SeuSigno_capricornio" width="1" height="1" style="display:none;" />
 
     <!-- Elementos de Fundo -->
     <div class="stars-bg"></div>
@@ -288,7 +291,7 @@
                 O CEO do zodíaco. A pessoa que tem uma planilha para os sentimentos. Ambição, sarcasmo fino e uma bateria social que acaba às 22h. Você não é frio, só prefere resolver o problema em vez de chorar por ele.
             </p>
 
-            <!-- Horóscopo do Dia (Largura Total na max-w-4xl) -->
+            <!-- Horóscopo do Dia Dinâmico -->
             <div class="bento-card p-8 md:p-10 w-full text-left relative overflow-hidden group border-element-earth/20">
                 <!-- Efeito de brilho no fundo -->
                 <div class="absolute -top-24 -right-24 w-64 h-64 bg-element-earth/10 blur-[60px] rounded-full group-hover:bg-element-earth/20 transition-colors duration-700"></div>
@@ -299,30 +302,37 @@
                             <span class="bg-element-earth/20 text-element-earth px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase border border-element-earth/30">
                                 Horóscopo do Dia
                             </span>
-                            <span class="text-gray-500 text-sm font-medium">Domingo, 14 de Junho de 2026</span>
+                            <span id="json-data" class="text-gray-500 text-sm font-medium">Carregando...</span>
                         </div>
                         <div class="flex gap-4">
                             <div class="flex flex-col items-center md:items-end">
                                 <span class="text-xs text-gray-500 uppercase tracking-wider mb-1">Vibe</span>
-                                <span class="text-white text-sm font-bold flex items-center gap-1">Produtiva (mas cansada) <span class="text-element-earth">💼</span></span>
+                                <span class="text-white text-sm font-bold flex items-center gap-1"><span id="json-vibe" class="capitalize">Carregando...</span></span>
                             </div>
                             <div class="h-8 w-px bg-white/10 hidden md:block"></div>
                             <div class="flex flex-col items-center md:items-start">
                                 <span class="text-xs text-gray-500 uppercase tracking-wider mb-1">Cor</span>
-                                <span class="text-white text-sm font-bold flex items-center gap-1"><div class="w-3 h-3 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]"></div> Verde Musgo</span>
+                                <span class="text-white text-sm font-bold flex items-center gap-1"><div class="w-3 h-3 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]"></div> <span id="json-cor" class="capitalize">Carregando...</span></span>
                             </div>
                         </div>
                     </div>
 
-                    <h3 class="font-display text-2xl font-bold mb-4 text-white">Produtividade hoje é saber descansar.</h3>
+                    <h3 id="json-titulo" class="font-display text-2xl font-bold mb-4 text-white">Carregando...</h3>
                     
-                    <p class="text-gray-300 leading-relaxed font-light mb-6">
-                        É domingão e a gente sabe que metade do seu cérebro já está planejando como dominar o mundo (ou pelo menos zerar sua caixa de entrada) na segunda-feira. Saturno, seu regente exigente, está pedindo uma trégua cósmica. Desliga o Notion, silencia o grupo da firma e vá fazer algo "inútil" só pelo prazer de existir. Você não precisa otimizar o seu final de semana. Permita-se ser improdutivo sem culpa, a empresa não vai falir se você dormir até mais tarde.
+                    <p id="json-texto" class="text-gray-300 leading-relaxed font-light mb-6">
+                        Carregando...
                     </p>
 
-                    <div class="flex items-center gap-4 bg-black/40 p-4 rounded-xl border border-white/5 inline-flex">
-                        <span class="text-xs text-gray-500 uppercase tracking-wider">Números da Sorte:</span>
-                        <span class="font-display font-bold text-lg text-element-earth tracking-widest">08 - 10 - 28 - 55</span>
+                    <div class="flex flex-wrap items-center gap-4 mt-6">
+                        <div class="flex items-center gap-4 bg-black/40 p-4 rounded-xl border border-white/5 inline-flex">
+                            <span class="text-xs text-gray-500 uppercase tracking-wider">Números da Sorte:</span>
+                            <span id="json-numeros" class="font-display font-bold text-lg text-element-earth tracking-widest">Carregando...</span>
+                        </div>
+                        
+                        <!-- Botão Match Cósmico -->
+                        <a href="https://seusigno.com.br/match-cosmico" class="inline-block bg-element-earth/20 text-element-earth hover:bg-element-earth/30 transition-colors rounded-xl px-6 py-4 font-bold text-sm">
+                            Match Cósmico
+                        </a>
                     </div>
                 </div>
             </div>
@@ -459,7 +469,7 @@
             </div>
         </section>
 
-        <!-- CTA Mapa Astral -->
+        <!-- CTA Mapa Astral Dinâmico com disparo de Tracker -->
         <section class="max-w-4xl mx-auto px-6 pb-24 text-center">
             <div class="p-10 md:p-14 rounded-[2rem] bg-gradient-to-br from-white/5 to-transparent border border-white/10 relative overflow-hidden">
                 <div class="absolute inset-0 bg-element-earth/5"></div>
@@ -468,10 +478,10 @@
                     <p class="text-gray-400 mb-8 max-w-xl mx-auto font-light">
                         Você sabe tudo sobre suas metas de carreira, mas e sobre sua configuração cósmica? Faça seu mapa astral grátis e veja seus próximos passos.
                     </p>
-                    <a href="/#tools"
-                        class="inline-block bg-white text-black hover:bg-gray-200 transition-colors rounded-full px-8 py-4 font-bold text-sm w-full sm:w-auto text-center">
+                    <button id="btn-mapa-astral"
+                        class="inline-block bg-white text-black hover:bg-gray-200 transition-colors rounded-full px-8 py-4 font-bold text-sm w-full sm:w-auto text-center cursor-pointer">
                         Auditar Meu Mapa Astral
-                    </a>
+                    </button>
                 </div>
             </div>
         </section>
@@ -497,8 +507,9 @@
         </div>
     </footer>
 
-    <!-- SCRIPT MENU MOBILE -->
+    <!-- SCRIPT GERAL -->
     <script>
+        // Lógica do Menu Mobile
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         const iconOpen = document.getElementById('menu-icon-open');
@@ -532,6 +543,64 @@
         document.querySelectorAll('.mobile-link').forEach(link => {
             link.addEventListener('click', () => {
                 if (menuOpen) toggleMenu();
+            });
+        });
+
+        // Lógica da leitura do arquivo JSON e Redirecionamento/Tracking do Botão
+        let mapaLink = "https://hotm.io/UXXGOi"; // Link fallback de segurança
+
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('../horoscopo_aleatorio.json')
+                .then(response => response.json())
+                .then(data => {
+                    const signoData = data['capricornio'];
+                    if(signoData) {
+                        document.getElementById('json-data').innerText = signoData.data;
+                        document.getElementById('json-vibe').innerText = signoData.vibe;
+                        document.getElementById('json-cor').innerText = signoData.cor;
+                        document.getElementById('json-titulo').innerText = signoData.titulo;
+                        
+                        // Manipulando o texto dinâmico para preservar as quebras de linha (<br> ou <p>)
+                        const texto = signoData.texto;
+                        const p1 = document.createElement("p");
+                        const p2 = document.createElement("p");
+                        
+                        // Dividindo o texto do horóscopo em dois parágrafos para simular a formatação do site
+                        const sentencas = texto.split('. ');
+                        const metade = Math.ceil(sentencas.length / 2);
+                        
+                        p1.className = "text-gray-300 leading-relaxed font-light mb-4";
+                        p1.innerText = sentencas.slice(0, metade).join('. ') + '.';
+                        
+                        p2.className = "text-gray-300 leading-relaxed font-light";
+                        p2.innerText = sentencas.slice(metade).join('. ');
+
+                        const textoContainer = document.getElementById('json-texto');
+                        textoContainer.innerHTML = ''; 
+                        textoContainer.appendChild(p1);
+                        textoContainer.appendChild(p2);
+
+                        document.getElementById('json-numeros').innerText = signoData.numeros;
+                        mapaLink = signoData.link_mapa_astral;
+                    }
+                })
+                .catch(error => console.error('Erro ao carregar o arquivo JSON:', error));
+
+            // Evento de clique para disparar o tracker e redirecionar
+            document.getElementById('btn-mapa-astral').addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // dispara o pixel de rastreio de clique
+                const trackerUrl = "https://tracker-email-tau.vercel.app/api/imagem?t=Organico_site_SeuSigno_capricornio_MAPA-ASTRAL";
+                const imgTracker = new Image();
+                imgTracker.src = trackerUrl;
+                
+                // aguarda 250ms para garantir que a requisição de rede do tracker foi enviada antes de sair
+                setTimeout(function() {
+                    if (mapaLink) {
+                        window.location.href = mapaLink;
+                    }
+                }, 250);
             });
         });
     </script>
