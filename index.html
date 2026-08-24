@@ -811,6 +811,23 @@
             }
         }
 
+        // --- TRACKER ---
+        const isPreview = new URLSearchParams(window.location.search).get('preview') === 'true';
+        const isEmbedded = window.self !== window.top;
+
+        if (!isPreview && !isEmbedded) {
+            const tracker = document.createElement('img');
+           // tracker.src = "https://tracker-email-tau.vercel.app/api/imagem?t=Organico_site_JGInteriores";
+            tracker.src = "https://site-tk-ecru.vercel.app/api/imagem?site=SeuSigno";
+            tracker.width = 1;
+            tracker.height = 1;
+            tracker.style.display = "none";
+            document.body.appendChild(tracker);
+        }
+
+      // --- TRACKER ---
+        
+
         menuBtn.addEventListener('click', toggleMenu);
 
         // Fecha o menu ao clicar em qualquer link
